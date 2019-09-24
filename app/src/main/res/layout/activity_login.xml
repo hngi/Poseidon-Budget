@@ -36,6 +36,8 @@
             android:padding="12dp"
             android:inputType="textEmailAddress"
             android:hint="@string/email"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="20sp" />
 
@@ -50,6 +52,7 @@
             android:textStyle="bold"
             android:inputType="textPassword"
             android:hint="@string/password"
+            android:textColor="@color/colorPrimaryDark"
             android:textColorHint="@color/colorPrimaryDark"
             android:textSize="20sp" />
 
