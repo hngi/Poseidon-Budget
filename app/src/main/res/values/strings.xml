@@ -7,4 +7,13 @@
     <string name="title_3">CALCULATE YOUR BUDGET</string>
     <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ex odio odit quis ratione totam unde. Aperiam delectus deleniti dolore mollitia nihil, pariatur, provident quisquam quo, repellendus rerum saepe sint!</string>
     <string name="title_4"></string>
+    <string name="username">Username</string>
+    <string name="not_registered">Not Registered</string>
+    <string name="register_here">Register Here</string>
+    <string name="click_here">Click Here</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="have_an_account">Have an account?Sign in <in></in></string>
 </resources>
