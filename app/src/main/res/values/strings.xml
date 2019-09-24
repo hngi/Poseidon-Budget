@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Poseidon Buget</string>
+    <string name="title_here">Title Here</string>
+    <string name="description_goes_here">Description goes Here</string>
+    <string name="title_1">CHECK YOUR BUDGET</string>
+    <string name="title_2">COMPARE YOUR BUDGET</string>
+    <string name="title_3">CALCULATE YOUR BUDGET</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ex odio odit quis ratione totam unde. Aperiam delectus deleniti dolore mollitia nihil, pariatur, provident quisquam quo, repellendus rerum saepe sint!</string>
+    <string name="title_4"></string>
 </resources>
