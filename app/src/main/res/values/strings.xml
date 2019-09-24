@@ -18,4 +18,16 @@
     <string name="have_an_account_not">Don\'t have an account?Register</string>
     <string name="welcome_to_poseidon_budget">WELCOME TO POSEIDON</string>
     <string name="poseidon">POSEIDON</string>
+    <string name="input_amount">Amount</string>
+    <string name="enter_name">Enter name</string>
+    <string name="make_a_budget">Make a budget</string>
+    <string name="home">Home</string>
+    <string name="histoy">Histoy</string>
+    <string name="add_item">Add item</string>
+    <string name="my_account">My account</string>
+    <string name="amount_total">Total tmount</string>
+    <string name="money">$ 10000</string>
+    <string name="txt_welcome">Welcome</string>
+    <string name="txt_user">Username</string>
+    <string name="recent">Recent transactions</string>
 </resources>
