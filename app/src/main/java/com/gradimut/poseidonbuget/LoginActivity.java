@@ -29,14 +29,15 @@ public class LoginActivity extends AppCompatActivity {
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mEmail != null) {
+                if (mEmail == null) {
                     Toast.makeText(getApplicationContext(), "Enter E-mail", Toast.LENGTH_SHORT).show();
                     mEmail.requestFocus();
-                }
-
-                if (mEmail != null) {
+                } else if (mPassword == null) {
                     Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
-                    mEmail.requestFocus();
+                    mPassword.requestFocus();
+                } else {
+                    Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+                    startActivity(intent);
                 }
 
             }
