@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroud_image">
+
+    <TextView
+        android:id="@+id/etUsername"
+        android:layout_width="331dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="489dp"
+        android:layout_marginStart="47dp"
+        android:background="@drawable/trans_white"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:text="@string/username"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/etEmail"
+        android:layout_width="331dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="409dp"
+        android:layout_marginStart="47dp"
+        android:background="@drawable/trans_white"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:text="@string/email"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/etPassword"
+        android:layout_width="331dp"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="328dp"
+        android:layout_marginStart="47dp"
+        android:background="@drawable/trans_white"
+        android:paddingLeft="40dp"
+        android:paddingTop="10dp"
+        android:text="@string/password"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/etRegister"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="247dp"
+        android:layout_marginLeft="92dp"
+        android:layout_marginStart="92dp"
+        android:background="@color/colorAccent"
+        android:text="@string/register"
+        android:textColor="#ffffff"
+        android:textSize="16dp"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>
