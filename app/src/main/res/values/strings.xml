@@ -5,7 +5,6 @@
     <string name="title_1">CHECK YOUR BUDGET</string>
     <string name="title_2">COMPARE YOUR BUDGET</string>
     <string name="title_3">CALCULATE YOUR BUDGET</string>
-    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore ex odio odit quis ratione totam unde. Aperiam delectus deleniti dolore mollitia nihil, pariatur, provident quisquam quo, repellendus rerum saepe sint!</string>
     <string name="title_4"></string>
     <string name="username">Username</string>
     <string name="not_registered">Not Registered</string>
@@ -17,4 +16,6 @@
     <string name="login">Login</string>
     <string name="have_an_account">Have an account?Sign in <in></in></string>
     <string name="have_an_account_not">Don\'t have an account?Register</string>
+    <string name="welcome_to_poseidon_budget">WELCOME TO POSEIDON</string>
+    <string name="poseidon">POSEIDON</string>
 </resources>
