@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@color/colorSecondaryLite">
 
     <LinearLayout
         android:orientation="vertical"
@@ -35,8 +35,8 @@
             android:background="@drawable/trans_white"
             android:padding="12dp"
             android:textStyle="bold"
-            android:text="@string/username"
-            android:textColor="@color/colorAccent"
+            android:hint="@string/username"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="20sp" />
 
         <EditText
@@ -49,7 +49,8 @@
             android:padding="12dp"
             android:textStyle="bold"
             android:inputType="textEmailAddress"
-            android:text="@string/email"
+            android:hint="@string/email"
+            android:textColorHint="@color/colorPrimaryDark"
             android:textColor="@color/colorAccent"
             android:textSize="20sp" />
 
@@ -63,8 +64,8 @@
             android:layout_marginTop="15dp"
             android:textStyle="bold"
             android:inputType="textPassword"
-            android:text="@string/password"
-            android:textColor="@color/colorAccent"
+            android:hint="@string/password"
+            android:textColorHint="@color/colorPrimary"
             android:textSize="20sp" />
 
         <Button
