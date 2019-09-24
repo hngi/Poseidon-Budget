@@ -6,6 +6,16 @@
     <string name="title_2">COMPARE YOUR BUDGET</string>
     <string name="title_3">CALCULATE YOUR BUDGET</string>
     <string name="title_4"></string>
+    <string name="username">Username</string>
+    <string name="not_registered">Not Registered</string>
+    <string name="register_here">Register Here</string>
+    <string name="click_here">Click Here</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="have_an_account">Have an account?Sign in <in></in></string>
+    <string name="have_an_account_not">Don\'t have an account?Register</string>
     <string name="welcome_to_poseidon_budget">WELCOME TO POSEIDON</string>
     <string name="poseidon">POSEIDON</string>
 </resources>

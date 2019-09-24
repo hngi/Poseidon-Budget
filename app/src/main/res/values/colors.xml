@@ -6,6 +6,8 @@
     <color name="colorAccentDark">#D5F0F6</color>
     <color name="colorSecondary">#8E8241</color>
     <color name="colorSecondaryDark">#D4AF37</color>
+    <color name="colorBackground">#EEEFF2</color>
     <color name="white">#ffff</color>
     <color name="dark">#000000</color>
+    <color name="colorSecondaryLite">#82D5E8</color>
 </resources>
