@@ -20,7 +20,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        etLog = findViewById(R.id.txtReg);
+        etLog = findViewById(R.id.txtLogin);
         mUsername = findViewById(R.id.etUsername);
         mEmail = findViewById(R.id.etEmail);
         mPassword = findViewById(R.id.etPassword);
@@ -42,6 +42,9 @@ public class SignupActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
                     mEmail.requestFocus();
                 }
+
+                Intent dash_intent = new Intent(SignupActivity.this, DashBoardActivity.class);
+                startActivity(dash_intent);
             }
         });
 
