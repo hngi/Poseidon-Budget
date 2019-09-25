@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Poseidon Buget</string>
+    <string name="allocated_budgets">Allocated Budgets</string>
+    <string name="allocation_text">Allocations based on priority</string>
+    <string name="back_button">Back</string>
+    <string name="home_nav">Dashboard</string>
+    <string name="profile_nav">Allocated Budgets</string>
+    <string name="add_nav">New budget</string>
+    <string name="history_nav">History</string>
 </resources>
