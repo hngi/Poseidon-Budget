@@ -19,14 +19,14 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
-        rv = findViewById(R.id.recycler_history);
-
-        dashList = new ArrayList<>();
-        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
-
-        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
-
-        rv.setLayoutManager(rvLayout);
+//        rv = findViewById(R.id.recycler_history);
+//
+//        dashList = new ArrayList<>();
+//        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
+//
+//        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
+//
+//        rv.setLayoutManager(rvLayout);
 
     }
 }
