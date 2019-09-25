@@ -30,6 +30,15 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
 
+        ImageView image = viewHolder.avatar_view;
+        TextView salary, stroke, currency, total, date;
+
+        salary = viewHolder.item_salary;
+        stroke = viewHolder.item_stroke;
+        currency = viewHolder.item_currency;
+        total = viewHolder.item_total;
+        date = viewHolder.item_total;
+
     }
 
     @Override
@@ -38,12 +47,18 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView avatar_view;
+        TextView item_salary, item_currency, item_stroke, item_total, item_date;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ImageView avatar_view;
-            TextView item_salary, item_currency, item_total, item_date;
+            avatar_view = itemView.findViewById(R.id.iconSymbol);
+            item_salary = itemView.findViewById(R.id.tvFirst);
+            item_stroke = itemView.findViewById(R.id.tvStroke);
+            item_currency = itemView.findViewById(R.id.currName);
+            item_total = itemView.findViewById(R.id.tvTotal);
+            item_date = itemView.findViewById(R.id.tvDate);
         }
     }
 }
