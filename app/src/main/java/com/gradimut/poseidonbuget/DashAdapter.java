@@ -9,12 +9,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
 
     private Context mContext;
+    private ArrayList<DashModel> mList;
 
-    DashAdapter(Context context) {
+    DashAdapter(Context context, ArrayList<DashModel> list) {
         mContext = context;
+        mList = list;
     }
 
     @NonNull
@@ -28,7 +32,9 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+
+        DashModel salaryItem = mList.get(position);
 
         ImageView image = viewHolder.avatar_view;
         TextView salary, stroke, currency, total, date;
@@ -39,11 +45,17 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
         total = viewHolder.item_total;
         date = viewHolder.item_total;
 
+        image.setImageResource(salaryItem.getImage());
+
+        salary.setText(salaryItem.getSalary());
+        currency.setText(salaryItem.getCurrency());
+        total.setText(salaryItem.getTotal());
+        date.setText(salaryItem.getDate());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return mList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
