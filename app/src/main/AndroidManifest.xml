@@ -12,9 +12,9 @@
         <activity android:name=".BudgetActivity"></activity>
         <activity android:name=".DashBoardActivity"></activity>
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SignupActivity" />
+        <activity android:name=".SplashActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SignupActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
