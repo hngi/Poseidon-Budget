@@ -42,15 +42,15 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
         salary = viewHolder.item_salary;
         stroke = viewHolder.item_stroke;
         currency = viewHolder.item_currency;
+        date = viewHolder.item_date;
         total = viewHolder.item_total;
-        date = viewHolder.item_total;
 
         image.setImageResource(salaryItem.getImage());
 
         salary.setText(salaryItem.getSalary());
         currency.setText(salaryItem.getCurrency());
-        total.setText(salaryItem.getTotal());
         date.setText(salaryItem.getDate());
+        total.setText(salaryItem.getTotal());
     }
 
     @Override
@@ -69,8 +69,8 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
             item_salary = itemView.findViewById(R.id.tvFirst);
             item_stroke = itemView.findViewById(R.id.tvStroke);
             item_currency = itemView.findViewById(R.id.currName);
-            item_total = itemView.findViewById(R.id.tvTotal);
             item_date = itemView.findViewById(R.id.tvDate);
+            item_total = itemView.findViewById(R.id.tvTotal);
         }
     }
 }
