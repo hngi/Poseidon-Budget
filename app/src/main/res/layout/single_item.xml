@@ -19,6 +19,7 @@
             android:orientation="horizontal">
 
             <ImageView
+                android:id="@+id/iconSymbol"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:src="@drawable/coins" />
@@ -36,77 +37,86 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tvFirst"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginBottom="8dp"
                         android:text="@string/FirstSalary"
-                        android:textStyle="bold"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
                     <TextView
+                        android:id="@+id/tvStroke"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginBottom="8dp"
                         android:text="@string/stroke"
-                        android:textStyle="bold"
-                        android:textColor="#000000"/>
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
+
                     <TextView
-                        android:id="@+id/coinName"
-                        android:text="@string/currency_name"
+                        android:id="@+id/currName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
                         android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
+                        android:text="@string/currency_name"
                         android:textColor="#000000"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:textStyle="bold" />
 
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:id="@+id/sction_price"
-                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="@string/Naira"
-                        android:textStyle="bold"
-                        android:textColor="#000000"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="4dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                    android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/priceUsd"
-                        android:text="@string/amount_total"
+                        android:id="@+id/tvSymbol"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/Naira"
                         android:textColor="#000000"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:layout_marginRight="16dp"
                         android:layout_marginBottom="8dp"
-                        android:textStyle="bold"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:text="@string/amount_total"
+                        android:textColor="#000000"
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_below="@id/section_name"
-                    android:orientation="horizontal"
                     android:layout_alignParentLeft="true"
                     android:layout_marginLeft="8dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:orientation="horizontal">
+
                     <TextView
-                        android:text="@string/currenct_date"
-                        android:textStyle="bold"
-                        android:textSize="20dp"
-                        android:textColor="#000000"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="4dp"
+                        android:id="@+id/tvDate"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginBottom="8dp"
+                        android:text="@string/currenct_date"
+                        android:textColor="#000000"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
