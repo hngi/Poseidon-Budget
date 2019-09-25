@@ -24,16 +24,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="POSEIDON"
+            android:text="@string/poseidon"
             android:textSize="23sp"
             android:textAlignment="center"
             android:id="@+id/txtWelcome"
             android:textStyle="bold"
-
+            android:fontFamily="Oxygen"
             android:lineHeight="29dp"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:textColor="#4695B2"/>
+            android:textColor="@color/colorPrimary"/>
 
         <!--<Button-->
             <!--android:layout_width="wrap_content"-->

@@ -15,7 +15,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="have_an_account">Have an account?Sign in <in></in></string>
-    <string name="have_an_account_not">Don\'t have an account?Register</string>
+    <string name="have_an_account_not">Don\'t have an account? Register</string>
     <string name="welcome_to_poseidon_budget">WELCOME TO POSEIDON</string>
     <string name="poseidon">POSEIDON</string>
     <string name="input_amount">Amount</string>
@@ -35,7 +35,8 @@
     <string name="currency_name">Naira</string>
     <string name="Naira">N</string>
     <string name="currenct_date">November 24th</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
 </resources>

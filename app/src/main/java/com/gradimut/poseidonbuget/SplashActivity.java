@@ -13,7 +13,6 @@ public class SplashActivity extends AppCompatActivity {
 
     private TextView txtWelcome;
     private ImageView imageView;
-//    private Button mSkip, mNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +21,14 @@ public class SplashActivity extends AppCompatActivity {
 
         txtWelcome = findViewById(R.id.txtWelcome);
         imageView = findViewById(R.id.imgLogo);
-//        mSkip = findViewById(R.id.skip);
-//        mNext = findViewById(R.id.next);
+
 
         Animation _mainAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_transition);
-        Animation _skipAnnimation = AnimationUtils.loadAnimation(this, R.anim.splash_skip_anim);
-//        Animation _nextAnnimation = AnimationUtils.loadAnimation(this, R.anim.splash_next_anim);
+        Animation _skipAnimation = AnimationUtils.loadAnimation(this, R.anim.splash_skip_anim);
 
-        txtWelcome.startAnimation(_skipAnnimation);
+        txtWelcome.startAnimation(_skipAnimation);
         imageView.startAnimation(_mainAnimation);
 
-//        mSkip.startAnimation(_skipAnnimation);
-//        mNext.startAnimation(_nextAnnimation);
 
         final Intent intent = new Intent(this, MainActivity.class);
 
