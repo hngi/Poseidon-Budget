@@ -5,7 +5,7 @@ public final class Database {
     public static final int DATABASE_VERSION = 1;
 
     // Database Name
-    public static final String DATABASE_NAME = "poseidon";
+    public static final String DATABASE_NAME = "poseidon.db";
 
     public final class UserTable {
         // User table name

@@ -29,9 +29,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        if (new PreferenceManager(this).checkPreference()) {
-//            loadNextActivity();
-//        }
         setContentView(R.layout.activity_main);
 
         viewPager = findViewById(R.id.viewPager);
@@ -134,41 +131,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mBackBtn.setText("");
             }
 
-//            mCurrentPage = i;
-//
-//
-//            if(i == 0 ){
-//                mNextBtn.setEnabled(true);
-//                mBackBtn.setEnabled(false);
-//                mBackBtn.setVisibility(View.INVISIBLE);
-//
-//                mNextBtn.setText("Next");
-//                mBackBtn.setText("");
-//            }else if(i == mDots.length - 1){
-//                Log.d("onPageSelected : ", String.valueOf(i));
-//                mNextBtn.setEnabled(true);
-//                mBackBtn.setEnabled(true);
-//                mBackBtn.setVisibility(View.VISIBLE);
-//
-//                mNextBtn.setText("Finish");
-//                mBackBtn.setText("Previous");
-//            }else{
-//
-//                mNextBtn.setEnabled(true);
-//                mBackBtn.setEnabled(true);
-//                mBackBtn.setVisibility(View.VISIBLE);
-//
-//                mNextBtn.setText("Next");
-//                mBackBtn.setText("Previous");
-//
-//            }
-//
-//
-//            if(i == 2){
-//                //start next Activity here with activity_next.xml layout
-//                Intent intent = new Intent( MainActivity.this, LoginActivity.class);
-//                startActivity(intent);
-//            }
         }
 
         @Override
