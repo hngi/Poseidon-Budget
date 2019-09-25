@@ -65,6 +65,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Intent reg_intent = new Intent(MainActivity.this, SignupActivity.class);
+        startActivity(reg_intent);
+
     }
 
     public void addDotsIndicator(int position){
