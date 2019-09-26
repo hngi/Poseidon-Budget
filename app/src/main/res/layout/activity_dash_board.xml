@@ -1,101 +1,137 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBackground">
+    android:background="@color/colorBackground"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:orientation="vertical"
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/txt_welcome"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome"
+        app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+        tools:text="@string/txt_user" />
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/dash_card"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/rounded_corner"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome"
+        app:layout_constraintTop_toBottomOf="@id/tvUsername">
 
-        <TextView
-            android:id="@+id/tvWelcome"
-            android:text="@string/txt_welcome"
-            android:textSize="25sp"
-            android:textColor="#000000"
-            android:paddingStart="8dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/tvUsername"
-            android:text="@string/txt_user"
-            android:textSize="25sp"
-            android:textColor="#000000"
-            android:paddingStart="8dp"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-        <android.support.v7.widget.CardView
-            android:layout_margin="10dp"
-            app:cardCornerRadius="8dp"
-            android:backgroundTint="@color/colorPrimary"
+        <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp">
+            android:layout_height="wrap_content"
+            android:background="@drawable/cardview_gradient">
 
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <ImageView
-                    android:padding="15dp"
-                    android:layout_marginTop="30dp"
-                    android:src="@drawable/ic_arrow"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/card_arrow"
+                android:src="@drawable/ic_person_black_24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:padding="15sp"
-                    android:textStyle="bold"
-                    android:text="@string/amount_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/amount_total"
+                android:textColor="#c4c4c4"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/imageView"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-                <TextView
-                    android:padding="15sp"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    android:text="@string/money"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/money"
+                android:textColor="#ffffff"
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView4"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
+                app:layout_constraintVertical_bias="1.0" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v7.widget.CardView>
 
-        <TextView
-            android:textColor="#000000"
-            android:textSize="25sp"
-            android:text="@string/recent"
-            android:paddingStart="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler_history"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@layout/single_item">
-
-            </android.support.v7.widget.RecyclerView>
-        </android.support.v4.widget.NestedScrollView>
-
-
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/tvRecent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/recent"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@id/tvWelcome"
+        app:layout_constraintTop_toBottomOf="@id/dash_card" />
 
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bttomNav"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
-        app:menu="@menu/bottom_navigation"
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="248dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/include2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvRecent"
+        app:layout_constraintTop_toBottomOf="@+id/tvRecent">
 
-</RelativeLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_history"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/single_item">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.v4.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/include2"
+        layout="@layout/bottom_nav"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- <android.support.design.widget.BottomNavigationView
+         android:id="@+id/bttomNav"
+         android:layout_alignParentBottom="true"
+         android:background="@color/colorAccent"
+         app:menu="@menu/bottom_navigation"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"/>-->
+</android.support.constraint.ConstraintLayout>
