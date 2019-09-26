@@ -75,9 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                         // Check if confirm password match the password
                         Toast.makeText(getApplicationContext(), "Password do not match!", Toast.LENGTH_SHORT).show();
                         mConfirmPass.requestFocus();
-                    }
-
-
+                    } else {
                         try {
 
                             String[] strColumns = {
@@ -133,6 +131,7 @@ public class SignupActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             Log.d("Signup", "onClick: " + e.getMessage());
                         }
+                    }
 
             }
         });

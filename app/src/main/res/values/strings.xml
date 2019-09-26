@@ -21,7 +21,8 @@
     <string name="password">Password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
-    <string name="have_an_account">Have an account?Sign in <in></in></string>
+    <string name="have_an_account">Already have an Account ? Sign in</string>
+    <string name="in">Sign in</string>
     <string name="have_an_account_not">Don\'t have an account? Register</string>
     <string name="welcome_to_poseidon_budget">WELCOME TO POSEIDON</string>
     <string name="poseidon">POSEIDON</string>
@@ -49,4 +50,6 @@
     <string name="confir_your_password">Confirm your password</string>
     <string name="my_pref">com.gradimut.com.MyPref</string>
     <string name="my_pref_key">com.gradimut.com.MyPrefKey</string>
+    <string name="already_nhave_an_naccount">Already  Have an  Account?</string>
+    <string name="txtSignup">Here\'s your first step with us</string>
 </resources>
