@@ -27,7 +27,7 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/tvWelcome"
         app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-        tools:text="@string/txt_user" />
+        android:text="@string/username"/>
 
 
     <android.support.v7.widget.CardView
