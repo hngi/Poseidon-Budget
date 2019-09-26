@@ -2,6 +2,13 @@
     <string name="app_name">Poseidon Buget</string>
     <string name="title_here">Title Here</string>
     <string name="description_goes_here">Description goes Here</string>
+    <string name="allocated_budgets">Allocated Budgets</string>
+    <string name="allocation_text">Allocations based on priority</string>
+    <string name="back_button">Back</string>
+    <string name="home_nav">Dashboard</string>
+    <string name="profile_nav">Allocated Budgets</string>
+    <string name="add_nav">New budget</string>
+    <string name="history_nav">History</string>
     <string name="title_1">CHECK YOUR BUDGET</string>
     <string name="title_2">COMPARE YOUR BUDGET</string>
     <string name="title_3">CALCULATE YOUR BUDGET</string>
@@ -39,4 +46,7 @@
     <string name="previous">Previous</string>
     <string name="next">Next</string>
     <string name="skip">Skip</string>
+    <string name="confir_your_password">Confirm your password</string>
+    <string name="my_pref">com.gradimut.com.MyPref</string>
+    <string name="my_pref_key">com.gradimut.com.MyPrefKey</string>
 </resources>
