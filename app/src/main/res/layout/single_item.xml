@@ -1,126 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
     android:background="@color/colorBackground">
 
-    <android.support.v7.widget.CardView
+    <ImageButton
+        android:id="@+id/profile_nav_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+
+        android:background="@drawable/history_shape"
+        android:contentDescription="@string/profile_nav"
+        android:src="@drawable/coins" />
+
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="8dp"
-        android:backgroundTint="@color/cardview_light_background"
-        app:cardCornerRadius="4dp">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="24dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
 
-            <ImageView
-                android:id="@+id/iconSymbol"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:src="@drawable/coins" />
+            android:text="@string/FirstSalary"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp">
+        <TextView
+            android:id="@+id/tvTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/amount_total"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="N 29,000" />
 
-                <LinearLayout
-                    android:id="@+id/section_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvFirst"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/FirstSalary"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvStroke"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/stroke"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/currName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/currency_name"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/sction_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvSymbol"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/Naira"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/tvTotal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/amount_total"
-                        android:textColor="#000000"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/section_name"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="8dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/tvDate"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:text="@string/currenct_date"
-                        android:textColor="#000000"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </RelativeLayout>
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-
-</RelativeLayout>
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/currenct_date"
+            android:textColor="#c4c4c4"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/tvFirst"
+            app:layout_constraintTop_toBottomOf="@+id/tvFirst"
+            app:layout_constraintVertical_bias="0.272" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

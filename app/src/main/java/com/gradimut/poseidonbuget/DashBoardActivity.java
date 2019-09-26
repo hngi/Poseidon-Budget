@@ -1,10 +1,11 @@
 package com.gradimut.poseidonbuget;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.LinearLayout;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -31,8 +32,23 @@ public class DashBoardActivity extends AppCompatActivity {
 
         rv.setLayoutManager(rvLayout);
 
-        DashAdapter adapter = new DashAdapter(this, dashList);
-        rv.setAdapter(adapter);
+        // DashAdapter adapter = new DashAdapter(this, dashList);
+        // rv.setAdapter(adapter);
 
+    }
+
+    public void profileBtn_onClick(View view) {
+        Intent intent = new Intent(view.getContext(), BudgetActivity.class);
+        startActivity(intent);
+    }
+
+    public void addBtn_onClick(View view) {
+        Intent intent = new Intent(view.getContext(), BudgetActivity.class);
+        startActivity(intent);
+    }
+
+    public void historyBtn_onClick(View view) {
+        Intent intent = new Intent(view.getContext(), HistoryFragmant.class);
+        startActivity(intent);
     }
 }
