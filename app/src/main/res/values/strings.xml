@@ -49,4 +49,5 @@
     <string name="confir_your_password">Confirm your password</string>
     <string name="my_pref">com.gradimut.com.MyPref</string>
     <string name="my_pref_key">com.gradimut.com.MyPrefKey</string>
+    <string name="card_arrow">Card image</string>
 </resources>
