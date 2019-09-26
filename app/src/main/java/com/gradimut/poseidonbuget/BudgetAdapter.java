@@ -10,12 +10,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
+public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<DashModel> mList;
+    private ArrayList<BudgetModel> mList;
 
-    DashAdapter(Context context, ArrayList<DashModel> list) {
+    BudgetAdapter(Context context, ArrayList<BudgetModel> list) {
         mContext = context;
         mList = list;
     }
@@ -33,20 +33,15 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        DashModel salaryItem = mList.get(position);
+        BudgetModel budgetItem = mList.get(position);
 
-        TextView salary, stroke, currency, total, date;
+        TextView itemName, cost;
 
-        salary = viewHolder.item_salary;
-        stroke = viewHolder.item_stroke;
-        currency = viewHolder.item_currency;
-        date = viewHolder.item_date;
-        total = viewHolder.item_total;
+        itemName = viewHolder.item_name;
+        cost = viewHolder.item_cost;
 
-        salary.setText(salaryItem.getSalary());
-        currency.setText(salaryItem.getCurrency());
-        date.setText(salaryItem.getDate());
-        total.setText(salaryItem.getTotal());
+        itemName.setText(budgetItem.getName());
+        cost.setText(budgetItem.getCost());
     }
 
     @Override
@@ -55,13 +50,13 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_salary, item_currency, item_stroke, item_total, item_date;
+        TextView item_name, item_cost;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_salary = itemView.findViewById(R.id.tvFirst);
-            item_date = itemView.findViewById(R.id.tvDate);
-            item_total = itemView.findViewById(R.id.tvTotal);
+
+            item_name = itemView.findViewById(R.id.text_item);
+            item_cost = itemView.findViewById(R.id.text_cost);
         }
     }
 }

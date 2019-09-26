@@ -117,74 +117,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <android.support.v7.widget.CardView
-            android:id="@+id/card_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            app:cardCornerRadius="20dp"
-            app:contentPadding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+        <include layout="@layout/bottom_nav" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:baselineAligned="false">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_gravity="center"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/home_nav"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_home_black_24dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="24dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/history_nav"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_history_black_24dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/add_nav"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="24dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/add_nav"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_add_black_24dp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/profile_nav_btn"
-                    style="?android:attr/borderlessButtonStyle"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/nav_shape"
-                    android:contentDescription="@string/profile_nav"
-                    android:padding="8dp"
-                    android:src="@drawable/ic_person_black_24dp" />
-
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
