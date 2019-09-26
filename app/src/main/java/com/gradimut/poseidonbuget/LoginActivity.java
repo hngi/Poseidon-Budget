@@ -74,6 +74,8 @@ public class LoginActivity extends AppCompatActivity {
 
                         int cursorCount = cursor.getCount();
 
+//                        Log.d("login : ", strColumns);
+
                         if (cursorCount >= 1) {
                             cursor.close();
                             Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
