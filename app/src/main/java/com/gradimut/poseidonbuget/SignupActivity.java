@@ -115,8 +115,6 @@ public class SignupActivity extends AppCompatActivity {
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("USERID", String.valueOf(userId));
                                 editor.putString("USERNAME", username);
-                                editor.putString("EMAIL", email);
-                                editor.putString("PASSWORD", pass);
                                 editor.putBoolean("isLoggedIn",true);
 
                                 editor.apply();
