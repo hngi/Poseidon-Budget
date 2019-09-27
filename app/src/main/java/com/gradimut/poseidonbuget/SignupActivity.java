@@ -75,9 +75,7 @@ public class SignupActivity extends AppCompatActivity {
                         // Check if confirm password match the password
                         Toast.makeText(getApplicationContext(), "Password do not match!", Toast.LENGTH_SHORT).show();
                         mConfirmPass.requestFocus();
-                    }
-
-
+                    } else {
                         try {
 
                             String[] strColumns = {
@@ -109,16 +107,14 @@ public class SignupActivity extends AppCompatActivity {
                                 values.put(Database.UserTable.COLUMN_USER_NAME, username);
                                 values.put(Database.UserTable.COLUMN_USER_PASSWORD, pass);
 
-                                databaseHelper.Insert(Database.UserTable.TABLE_USER, values);
-
+                                long userId =  databaseHelper.Insert(Database.UserTable.TABLE_USER, values);
 
 
                                 // Save data to the shared preference.
                                 SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putString("USERNAME", mUsername.getText().toString().trim());
-                                editor.putString("EMAIL", mEmail.getText().toString().trim());
-                                editor.putString("PASSWORD", mPassword.getText().toString().trim());
+                                editor.putString("USERID", String.valueOf(userId));
+                                editor.putString("USERNAME", username);
                                 editor.putBoolean("isLoggedIn",true);
 
                                 editor.apply();
@@ -133,6 +129,7 @@ public class SignupActivity extends AppCompatActivity {
                         } catch (Exception e) {
                             Log.d("Signup", "onClick: " + e.getMessage());
                         }
+                    }
 
             }
         });

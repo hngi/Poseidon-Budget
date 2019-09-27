@@ -1,11 +1,15 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
+import com.gradimut.poseidonbuget.utils.PreferenceManager;
+
 
 import java.util.ArrayList;
 
@@ -19,6 +23,15 @@ public class DashBoardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
+
+        TextView userTV = findViewById(R.id.tvUsername);
+
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
+        final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
+
+        userTV.setText(userName);
 
         rv = findViewById(R.id.recycler_history);
 

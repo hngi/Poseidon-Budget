@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#055DA8</color>
-    <color name="colorPrimaryDark">#054A86</color>
+    <color name="colorPrimaryDark">#054A86 </color>
     <color name="colorAccentDark">#82D5E8</color>
     <color name="colorAccent">#D5F0F6</color>
     <color name="colorSecondary">#8E8241</color>
@@ -12,5 +12,5 @@
     <color name="colorSecondaryLite">#82D5E8</color>
     <color name="colorTransparentWhite">#cccccccc</color>
     <color name="indicator">#055DA8</color>
-
+    <color name="txt">#B8055DA8</color>
 </resources>

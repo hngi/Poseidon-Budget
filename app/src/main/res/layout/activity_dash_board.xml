@@ -29,7 +29,6 @@
         app:layout_constraintTop_toBottomOf="@id/tvWelcome"
         tools:text="@string/txt_user" />
 
-
     <android.support.v7.widget.CardView
         android:id="@+id/dash_card"
         android:layout_width="match_parent"

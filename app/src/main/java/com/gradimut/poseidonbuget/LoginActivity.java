@@ -1,7 +1,9 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,7 +76,40 @@ public class LoginActivity extends AppCompatActivity {
 
                         int cursorCount = cursor.getCount();
 
+
                         if (cursorCount >= 1) {
+
+                            String search = " SELECT " + Database.UserTable.COLUMN_USER_ID + ", " +
+                                    Database.UserTable.COLUMN_USER_NAME + " FROM " + Database.UserTable.TABLE_USER +
+                                    " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";;
+//                            String db = Database.DATABASE_NAME;
+//                            String db = databaseHelper.getWritableDatabase();
+
+                            Cursor cursorSearch = databaseHelper.getWritableDatabase().rawQuery(search, null);
+
+                            if (cursorSearch.moveToFirst()) {
+                                do {
+                                    String id = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_ID)));
+                                    String userName = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_NAME)));
+
+                                    SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                                    editor.putString("USERID", id);
+                                    editor.putString("USERNAME", userName);
+                                    editor.putBoolean("isLoggedIn",true);
+
+                                    editor.apply();
+                                } while (cursorSearch.moveToNext());
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
+                            }
+
+                            cursorSearch.close();
+
+
+
                             cursor.close();
                             Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
                             startActivity(intent);
