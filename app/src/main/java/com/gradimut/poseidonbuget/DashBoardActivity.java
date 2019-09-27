@@ -8,8 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-
 import com.gradimut.poseidonbuget.utils.PreferenceManager;
+
 
 import java.util.ArrayList;
 
@@ -56,12 +56,12 @@ public class DashBoardActivity extends AppCompatActivity {
     }
 
     public void addBtn_onClick(View view) {
-        Intent intent = new Intent(view.getContext(), BudgetActivity.class);
+        Intent intent = new Intent(view.getContext(), AddNewActivity.class);
         startActivity(intent);
     }
 
     public void historyBtn_onClick(View view) {
-        Intent intent = new Intent(view.getContext(), HistoryFragmant.class);
+        Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
     }
 }

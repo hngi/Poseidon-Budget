@@ -27,8 +27,7 @@
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@id/tvWelcome"
         app:layout_constraintTop_toBottomOf="@id/tvWelcome"
-        android:text="@string/username"/>
-
+        tools:text="@string/txt_user" />
 
     <android.support.v7.widget.CardView
         android:id="@+id/dash_card"
@@ -108,8 +107,10 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/include2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/tvRecent"
-        app:layout_constraintTop_toBottomOf="@+id/tvRecent">
+        app:layout_constraintTop_toBottomOf="@+id/tvRecent"
+        app:layout_constraintVertical_bias="0.142">
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_history"

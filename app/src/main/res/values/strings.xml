@@ -51,6 +51,12 @@
     <string name="confir_your_password">Confirm your password</string>
     <string name="my_pref">com.gradimut.com.MyPref</string>
     <string name="my_pref_key">com.gradimut.com.MyPrefKey</string>
+    <string name="card_arrow">Card image</string>
+    <string name="filter">Filter</string>
+    <string name="budget_name">Budget Name</string>
+    <string name="amount">Amount</string>
+    <string name="priority">Priority</string>
+    <string name="item_name">Item Name</string>
     <string name="already_nhave_an_naccount">Already  Have an  Account?</string>
     <string name="txtSignup">Here\'s your first step with us</string>
 </resources>
