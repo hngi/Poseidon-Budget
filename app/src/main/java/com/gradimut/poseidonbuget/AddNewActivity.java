@@ -1,6 +1,7 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
@@ -90,9 +91,13 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                 String two = spinnerTwo.getSelectedItem().toString();
                 String three = spinnerThree.getSelectedItem().toString();
                 String four = spinnerFour.getSelectedItem().toString();
+                final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+                final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
+                final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
 
 
-                Toast.makeText(getApplicationContext(), one + " " + two + " " + three + " " + four, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), one + " " + two + " " + three + " " + four + " " + userName, Toast.LENGTH_LONG).show();
 
 //                Toast.makeText(getApplicationContext(), firstET.getText().toString(), Toast.LENGTH_LONG).show();
             }

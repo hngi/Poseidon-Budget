@@ -28,5 +28,45 @@ public final class Database {
 
     }
 
+    public final class Budget {
+        // Budget table name
+        public static final String TABLE_NAME = "budgets";
+
+        // Budget Table Columns names
+        public static final String COLUMN_BUDGET_ID = "budget_id";
+        public static final String COLUMN_BUDGET_NAME = "budget_name";
+        public static final String COLUMN_BUDGET_AMOUNT = "budget_amount";
+        public static final String COLUMN_USER_ID = "user_id";
+
+        // Create table
+        public static final String CREATE_QUERY =
+                "CREATE TABLE IF NOT EXISTS " + Budget.TABLE_NAME + " ( "
+                        + Budget.COLUMN_BUDGET_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + Budget.COLUMN_BUDGET_NAME + " TEXT, "
+                        + Budget.COLUMN_BUDGET_AMOUNT + " TEXT, "
+                        + Budget.COLUMN_USER_ID + " INTEGER)";
+    }
+
+    public final class Items {
+        // Budget table name
+        public static final String TABLE_NAME = "items";
+
+        // Budget Table Columns names
+        public static final String COLUMN_ITEM_ID = "item_id";
+        public static final String COLUMN_ITEM_NAME = "item_name";
+        public static final String COLUMN_PRIORITY = "item_priority";
+        public static final String COLUMN_BUDGET_ALLOCATE = "budget_allocate";
+        public static final String COLUMN_BUDGET_ID = "budget_id";
+
+        // Create table
+        public static final String CREATE_QUERY =
+                "CREATE TABLE IF NOT EXISTS " + Items.TABLE_NAME + " ( "
+                        + Items.COLUMN_ITEM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + Items.COLUMN_ITEM_NAME + " TEXT, "
+                        + Items.COLUMN_PRIORITY + " TEXT, "
+                        + Items.COLUMN_BUDGET_ALLOCATE + " TEXT, "
+                        + Items.COLUMN_BUDGET_ID + " INTEGER)";
+    }
+
 
 }
