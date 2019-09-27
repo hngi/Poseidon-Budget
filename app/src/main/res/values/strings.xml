@@ -32,16 +32,15 @@
     <string name="histoy">Histoy</string>
     <string name="add_item">Add item</string>
     <string name="my_account">My account</string>
-    <string name="amount_total">Total tmount</string>
-    <string name="money">$ 10000</string>
+    <string name="amount_total">Total Budget</string>
+    <string name="money">N 10000</string>
     <string name="txt_welcome">Welcome</string>
     <string name="txt_user">Username</string>
     <string name="recent">Recent transactions</string>
     <string name="stroke">|</string>
     <string name="FirstSalary">First salary</string>
     <string name="currency_name">Naira</string>
-    <string name="Naira">N</string>
-    <string name="currenct_date">November 24th</string>
+    <string name="currenct_date">29 July 2019</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="previous">Previous</string>
     <string name="next">Next</string>
@@ -50,4 +49,9 @@
     <string name="my_pref">com.gradimut.com.MyPref</string>
     <string name="my_pref_key">com.gradimut.com.MyPrefKey</string>
     <string name="card_arrow">Card image</string>
+    <string name="filter">Filter</string>
+    <string name="budget_name">Budget Name</string>
+    <string name="amount">Amount</string>
+    <string name="priority">Priority</string>
+    <string name="item_name">Item Name</string>
 </resources>
