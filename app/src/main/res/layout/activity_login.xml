@@ -104,6 +104,10 @@
         android:paddingLeft="2dp"
         android:text="Register now"
         android:layout_marginRight="50dp"
+
+
+
+
         android:textColor="#4681B3" />
 
 
