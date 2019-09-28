@@ -2,28 +2,38 @@ package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.gradimut.poseidonbuget.model.BudgetModel;
 import com.gradimut.poseidonbuget.model.DashModel;
+import com.gradimut.poseidonbuget.sql.Database;
+import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DashBoardActivity extends AppCompatActivity {
 
     RecyclerView rv;
 
-    ArrayList<DashModel> dashList;
 
     private ImageButton mNavBtn;
     private CardView mNavCard;
+
+    private TextView textView2, am;
+    HistoryAdapter itemAdapter;
+    List<BudgetModel> itmList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,28 +44,162 @@ public class DashBoardActivity extends AppCompatActivity {
 
         TextView userTV = findViewById(R.id.tvUsername);
 
+        rv = findViewById(R.id.recycler_history);
+        itemAdapter = new HistoryAdapter(itmList);
+
+        textView2 = findViewById(R.id.tvNoBudget);
+
+        RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        rv.setLayoutManager(rvLayout);
+        rv.setAdapter(itemAdapter);
+
+        checkIt();
+
+        populate();
+
+
         final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
-        final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
         final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
 
         userTV.setText(userName);
 
         rv = findViewById(R.id.recycler_history);
 
-        dashList = new ArrayList<>();
-        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
-        dashList.add(new DashModel(R.drawable.coins,"November salary", "2 November", "Naira","100000"));
-        dashList.add(new DashModel(R.drawable.coins,"January salary", "24 January", "Naira","200000"));
-        dashList.add(new DashModel(R.drawable.coins,"December salary", "03 December", "Naira","200000"));
-        dashList.add(new DashModel(R.drawable.coins,"August salary", "24 August", "Naira","200000"));
-        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
+//        dashList = new ArrayList<>();
+//        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
+//        dashList.add(new DashModel(R.drawable.coins,"November salary", "2 November", "Naira","100000"));
+//        dashList.add(new DashModel(R.drawable.coins,"January salary", "24 January", "Naira","200000"));
+//        dashList.add(new DashModel(R.drawable.coins,"December salary", "03 December", "Naira","200000"));
+//        dashList.add(new DashModel(R.drawable.coins,"August salary", "24 August", "Naira","200000"));
+//        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
 
         rv.setLayoutManager(rvLayout);
 
         // DashAdapter adapter = new DashAdapter(this, dashList);
         // rv.setAdapter(adapter);
 
+    }
+
+    private void checkIt() {
+        try {
+
+            am = findViewById(R.id.am);
+
+
+            final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+            final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+
+
+            DatabaseHelper helper = new DatabaseHelper(getApplicationContext());
+
+
+            String[] strColumns = {
+                    Database.UserTable.COLUMN_USER_ID,
+            };
+
+            String whereClause = Database.Budget.COLUMN_USER_ID + " = ? ";
+
+
+            String[] whereArgs = {userId};
+
+            Cursor cursor = helper.read(
+                    Database.UserTable.TABLE_USER,
+                    strColumns,
+                    whereClause,
+                    whereArgs,
+                    null,
+                    null,
+                    null
+            );
+
+            int cursorCount = cursor.getCount();
+
+
+            if (cursorCount >= 1) {
+
+                String search = " SELECT " + Database.Budget.COLUMN_BUDGET_AMOUNT +  " FROM " + Database.Budget.TABLE_NAME +
+                        " WHERE " + Database.Budget.COLUMN_USER_ID + " LIKE '%" + userId + "%'";
+//                            String db = Database.DATABASE_NAME;
+//                            String db = databaseHelper.getWritableDatabase();
+
+                Cursor cursorSearch = helper.getWritableDatabase().rawQuery(search, null);
+
+                if (cursorSearch.moveToFirst()) {
+                    do {
+                        String amount = cursorSearch.getString((cursorSearch.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT)));
+
+                        am.setText(amount);
+
+                    } while (cursorSearch.moveToNext());
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
+                }
+
+                cursorSearch.close();
+
+            } else {
+                Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_LONG).show();
+            }
+
+        } catch (Exception e) {
+            Log.d("Singin", "onClick: " + e.getMessage());
+        }
+    }
+
+    private void populate() {
+        try {
+
+            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+
+            String[] strColumns = {
+                    Database.Budget.COLUMN_BUDGET_AMOUNT,
+                    Database.Budget.COLUMN_BUDGET_NAME,
+                    Database.Budget.COLUMN_DATETIME,
+            };
+
+            Cursor cursor = databaseHelper.read(
+                    Database.Budget.TABLE_NAME,
+                    strColumns,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+            );
+
+
+            if (cursor.isBeforeFirst()) {
+
+                rv.setVisibility(View.VISIBLE);
+                textView2.setVisibility(View.GONE);
+
+                while (cursor.moveToNext()) {
+                    BudgetModel item = new BudgetModel();
+
+                    String amount = cursor.getString(cursor.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT));
+                    String date = cursor.getString(cursor.getColumnIndex(Database.Budget.COLUMN_DATETIME));
+                    String name = cursor.getString(cursor.getColumnIndex(Database.Budget.COLUMN_BUDGET_NAME));
+
+                    item.setAmount(amount);
+                    item.setDate(date);
+                    item.setName(name);
+//                    item.setImage(R.drawable.);
+
+                    itmList.add(item);
+                    itemAdapter.notifyDataSetChanged();
+                }
+                cursor.close();
+            } else {
+                textView2.setVisibility(View.VISIBLE);
+                rv.setVisibility(View.GONE);
+            }
+        } catch (Exception e) {
+            Log.d("populateBudget: ", e.getMessage());
+            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     public void profileBtn_onClick(View view) {

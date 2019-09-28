@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -75,9 +76,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                     mItemName = view1.findViewById(R.id.itemNamess);
                     mSpinner = view1.findViewById(R.id.spinner);
 
-                    DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
 
-                    ContentValues values = new ContentValues();
 
                      spinnerItem = mSpinner.getSelectedItem().toString().trim();
                      itemName = mItemName.getText().toString().trim();
@@ -88,83 +87,132 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
 
                     boolean condition = itemName.isEmpty() || budgetName.isEmpty() || budgetAmount.isEmpty();
+
+
                     if (spinnerItem.equals("High")) {
                         if (condition){
                             Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
                         } else {
+                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                            DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
+                            ContentValues values = new ContentValues();
+                            ContentValues values2 = new ContentValues();
+
                             allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
+                            String _allocateString = String.valueOf(allocate);
+                            try {
+                                // Inserting data into budget database
+                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
+                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
+                                values.put(Database.Budget.COLUMN_USER_ID, userId);
 
-                            // Inserting data into budget database
-                            values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+                                // Insert to the budegt Db
+                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                Log.d("BudgetId : ", String.valueOf(budgetId));
+                                Toast.makeText(getApplicationContext(), "Check this : " + (int) budgetId, Toast.LENGTH_LONG).show();
 
-                            // Insert to the budegt Db
-                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                // Inserting data into Items database
+                                values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
+                                values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
+                                values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
+                                values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
 
-                            // Inserting data into Items database
-                            values.put(Database.Items.COLUMN_ITEM_NAME, itemName);
-                            values.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
-                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
-                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                // Insert to the budegt Db
+                                databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
 
-                            // Insert to the budegt Db
-                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                Log.d("Saving : ", e.getMessage());
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
+
+
                         }
 
-                    } else if (spinnerItem.equals("Medium")) {
+                    }
+
+                    else if (spinnerItem.equals("Medium")) {
                         if (condition){
                             Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
                         } else {
+                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                            ContentValues values = new ContentValues();
+                            DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
+                            ContentValues values2 = new ContentValues();
                             allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
+                            String _allocateString = String.valueOf(allocate);
 
-                            // Inserting data into budget database
-                            values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+                            try {
+                                // Inserting data into budget database
+                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
+                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
+                                values.put(Database.Budget.COLUMN_USER_ID, userId);
 
-                            // Insert to the budegt Db
-                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                // Insert to the budegt Db
+                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
 
-                            // Inserting data into Items database
-                            values.put(Database.Items.COLUMN_ITEM_NAME, itemName);
-                            values.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
-                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
-                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                Log.d("BudgetId : ", String.valueOf(budgetId));
+                                Toast.makeText(getApplicationContext(), "Check this : " + (int) budgetId, Toast.LENGTH_LONG).show();
 
-                            // Insert to the budegt Db
-                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                // Inserting data into Items database
+                                values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
+                                values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
+                                values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
+                                values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
 
-                            Toast.makeText(getApplicationContext(), "Bugdet Saved!!", Toast.LENGTH_LONG).show();
+                                // Insert to the budegt Db
+                                databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
 
-                            Intent intent = new Intent(view.getContext(), BudgetActivity.class);
-                            startActivity(intent);
+                                Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                Log.d("Saving : ", e.getMessage());
+                                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
 
 
                         }
 
-                    } else if (spinnerItem.equals("Low")) {
+                    }
+
+                    else if (spinnerItem.equals("Low")) {
                         if (condition){
                             Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
                         } else {
+                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                            ContentValues values = new ContentValues();
+                            DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
+                            ContentValues values2 = new ContentValues();
+
+
                             allocate = (float) 5 / 100 * Integer.parseInt(budgetAmount);
+                            String _allocateString = String.valueOf(allocate);
+                            try {
+                                // Inserting data into budget database
+                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
+                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
+                                values.put(Database.Budget.COLUMN_USER_ID, userId);
 
-                            // Inserting data into budget database
-                            values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+                                // Insert to the budegt Db
+                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
 
-                            // Insert to the budegt Db
-                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
 
-                            // Inserting data into Items database
-                            values.put(Database.Items.COLUMN_ITEM_NAME, itemName);
-                            values.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
-                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
-                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                // Inserting data into Items database
+                                values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
+                                values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
+                                values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
+                                values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
 
-                            // Insert to the budegt Db
-                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                                // Insert to the budegt Db
+                                databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
+
+                                Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                Log.d("Saving : ", e.getMessage());
+                                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                 }

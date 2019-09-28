@@ -9,56 +9,50 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gradimut.poseidonbuget.model.BudgetModel;
+import com.gradimut.poseidonbuget.model.ItemModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder> {
 
-    private Context mContext;
-    private ArrayList<BudgetModel> mList;
+    List<ItemModel> itemModelList;
 
-    BudgetAdapter(Context context, ArrayList<BudgetModel> list) {
-        mContext = context;
-        mList = list;
+    public BudgetAdapter(List<ItemModel> itemModelList) {
+        this.itemModelList = itemModelList;
     }
 
-    @NonNull
-    @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        View view = layoutInflater.inflate(R.layout.single_item, parent, false);
+        TextView itemExId, text_cost;
 
-        return new ViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-
-        BudgetModel budgetItem = mList.get(position);
-
-        TextView itemName, cost;
-
-        itemName = viewHolder.item_name;
-        cost = viewHolder.item_cost;
-
-        itemName.setText(budgetItem.getName());
-        cost.setText(budgetItem.getAmount());
-    }
-
-    @Override
-    public int getItemCount() {
-        return mList.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView item_name, item_cost;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            item_name = itemView.findViewById(R.id.text_item);
-            item_cost = itemView.findViewById(R.id.text_cost);
+            itemExId =  itemView.findViewById(R.id.itemExId);
+            text_cost = itemView.findViewById(R.id.text_cost);
         }
+
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(viewGroup.getContext()).
+                inflate(R.layout.item_expenditure_list, viewGroup, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
+        ItemModel item = itemModelList.get(i);
+        viewHolder.itemExId.setText(item.getItemName());
+        viewHolder.text_cost.setText(item.getBudgetAllocate());
+    }
+
+    @Override
+    public int getItemCount() {
+        return itemModelList.size();
     }
 }
