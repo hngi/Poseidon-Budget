@@ -114,22 +114,36 @@
             android:fontFamily="@font/nunito_semibold"
             android:text="@string/no_budget"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/include"
-            app:layout_constraintEnd_toEndOf="@+id/include"
-            app:layout_constraintStart_toStartOf="@+id/include"
-            app:layout_constraintTop_toTopOf="@+id/include" />
-        <include
-            android:id="@+id/include"
-            layout="@layout/content_expenditure_list"
+            app:layout_constraintBottom_toBottomOf="@+id/budetRV"
+            app:layout_constraintEnd_toEndOf="@+id/budetRV"
+            app:layout_constraintStart_toStartOf="@+id/budetRV"
+            app:layout_constraintTop_toTopOf="@+id/budetRV" />
+        
+        <android.support.v7.widget.RecyclerView
+            android:visibility="invisible"
+            android:id="@+id/budetRV"
             android:layout_width="match_parent"
-            android:layout_height="240dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="24dp"
             android:layout_marginTop="72dp"
             android:layout_marginEnd="36dp"
-            app:layout_constraintBottom_toTopOf="@+id/card_view"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+        </android.support.v7.widget.RecyclerView>
+        <!--<include-->
+            <!--android:id="@+id/include"-->
+            <!--layout="@layout/content_expenditure_list"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="240dp"-->
+            <!--android:layout_marginStart="24dp"-->
+            <!--android:layout_marginTop="72dp"-->
+            <!--android:layout_marginEnd="36dp"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/card_view"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
 
         <include
             android:id="@+id/include2"

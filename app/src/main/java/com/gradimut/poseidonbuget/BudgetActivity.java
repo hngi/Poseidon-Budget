@@ -29,7 +29,13 @@ public class BudgetActivity extends AppCompatActivity {
         String date = formatter.format(today);
         tvDate.setText(date);
         navSetUp();
+
+        populateBudget();
         // setNavigationMenu();
+    }
+
+    private void populateBudget() {
+        
     }
 
     public void dashboardBtn_onClick(View view) {
