@@ -59,4 +59,7 @@
     <string name="already_nhave_an_naccount">Already  Have an  Account?</string>
     <string name="txtSignup">Here\'s your first step with us</string>
     <string name="enter_item_name">Enter item name</string>
+    <string name="p">p</string>
+    <string name="no_budget">You have not created any budget yet</string>
+    <string name="no_money">N 0.00</string>
 </resources>

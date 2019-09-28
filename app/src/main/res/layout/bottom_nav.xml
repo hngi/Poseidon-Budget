@@ -18,57 +18,92 @@
         android:layout_height="wrap_content"
         android:baselineAligned="false">
 
-        <ImageButton
-            style="?android:attr/borderlessButtonStyle"
+        <android.support.v7.widget.CardView
+            android:id="@+id/home_nav_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="24dp"
             android:layout_weight="1"
-            android:contentDescription="@string/home_nav"
-            android:onClick="launchDashboard"
-            android:padding="8dp"
-            android:src="@drawable/ic_home_black_24dp" />
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
 
-        <ImageButton
-            style="?android:attr/borderlessButtonStyle"
+            <ImageButton
+                android:id="@+id/home_nav_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/home_nav"
+                android:onClick="dashboardBtn_onClick"
+                android:padding="8dp"
+                android:src="@drawable/ic_home_black_24dp" />
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/history_nav_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="24dp"
             android:layout_weight="1"
-            android:contentDescription="@string/history_nav"
-            android:onClick="launchHistory"
-            android:padding="8dp"
-            android:src="@drawable/ic_history_black_24dp" />
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
 
-        <ImageButton
-            android:id="@+id/add_nav"
-            style="?android:attr/borderlessButtonStyle"
+            <ImageButton
+                android:id="@+id/history_nav_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/history_nav"
+                android:onClick="historyBtn_onClick"
+                android:padding="8dp"
+                android:src="@drawable/ic_history_black_24dp" />
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/add_nav_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            app:cardCornerRadius="10dp"
+            android:layout_marginEnd="24dp"
+            app:cardElevation="0dp">
+
+            <ImageButton
+                android:id="@+id/add_nav_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/history_nav"
+                android:onClick="addBtn_onClick"
+                android:padding="8dp"
+                android:src="@drawable/ic_add_black_24dp" />
+        </android.support.v7.widget.CardView>
+
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/profile_nav_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginEnd="24dp"
             android:layout_weight="1"
-            android:contentDescription="@string/add_nav"
-            android:onClick="launchNew"
-            android:padding="8dp"
-            android:src="@drawable/ic_add_black_24dp" />
+            app:cardCornerRadius="10dp"
+            app:cardElevation="0dp">
 
-        <ImageButton
-            android:id="@+id/profile_nav_btn"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginEnd="24dp"
-            android:layout_weight="1"
-            android:background="@drawable/nav_shape"
-            android:contentDescription="@string/profile_nav"
-            android:onClick="profileBtn_onClick"
-            android:padding="8dp"
-            android:src="@drawable/ic_person_black_24dp" />
-
+            <ImageButton
+                android:id="@+id/profile_nav_btn"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/history_nav"
+                android:onClick="profileBtn_onClick"
+                android:padding="8dp"
+                android:src="@drawable/ic_person_black_24dp" />
+        </android.support.v7.widget.CardView>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

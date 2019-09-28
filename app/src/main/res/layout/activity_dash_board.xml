@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:layout_marginBottom="24dp"
-                android:text="@string/money"
+                android:text="@string/no_money"
                 android:fontFamily="@font/oxygen"
                 android:textColor="#ffffff"
                 android:textSize="30sp"
@@ -104,6 +104,18 @@
         app:layout_constraintStart_toStartOf="@id/tvWelcome"
         app:layout_constraintTop_toBottomOf="@id/dash_card" />
 
+
+    <TextView
+        android:id="@+id/tvNoBudget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nunito_semibold"
+        android:text="@string/no_budget"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/nestedScrollView"
+        app:layout_constraintEnd_toEndOf="@+id/nestedScrollView"
+        app:layout_constraintStart_toStartOf="@+id/nestedScrollView"
+        app:layout_constraintTop_toTopOf="@+id/nestedScrollView" />
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
@@ -134,6 +146,7 @@
         layout="@layout/bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nestedScrollView" />
 
 </android.support.constraint.ConstraintLayout>
