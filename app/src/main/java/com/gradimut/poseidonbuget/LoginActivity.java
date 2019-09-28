@@ -111,7 +111,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
                             cursor.close();
-                            Intent intent = new Intent(LoginActivity.this, AddNewActivity.class);
+                            Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
                             startActivity(intent);
                             finish();
 
