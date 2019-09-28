@@ -187,14 +187,58 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_history"
+        <LinearLayout
+            android:id="@+id/itemLayout"
+            android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            tools:listitem="@layout/one_item">
+            android:orientation="vertical"
+            android:padding="8dp">
 
-        </android.support.v7.widget.RecyclerView>
+            <include
+                android:id="@+id/include_item"
+                layout="@layout/input_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/include_item3"
+                layout="@layout/input_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_item" />
+
+            <include
+                android:id="@+id/include_item4"
+                layout="@layout/input_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_item3" />
+
+            <include
+                android:id="@+id/include_item5"
+                layout="@layout/input_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/include_item4" />
+        </LinearLayout>
+
         <!--<android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -262,6 +306,7 @@
 
         <android.support.v7.widget.AppCompatImageButton
             style="?android:attr/borderlessButtonStyle"
+            android:onClick="addItem_onClick"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
