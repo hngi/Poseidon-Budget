@@ -54,7 +54,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:text="N 29,000" />
+            android:text="@string/no_money" />
 
         <TextView
             android:id="@+id/dateTxtView"
@@ -64,12 +64,12 @@
             android:layout_marginBottom="78dp"
             android:fontFamily="@font/oxygen"
             android:textColor="#c4c4c4"
-            android:textSize="17sp"
+            android:text="@string/currenct_date"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:text="July 5th,2019" />
+            android:textSize="18sp" />
 
 
     </android.support.constraint.ConstraintLayout>
@@ -107,6 +107,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/tvNoBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_semibold"
+            android:text="@string/no_budget"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/include"
+            app:layout_constraintEnd_toEndOf="@+id/include"
+            app:layout_constraintStart_toStartOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/include" />
         <include
             android:id="@+id/include"
             layout="@layout/content_expenditure_list"
@@ -125,7 +136,8 @@
             layout="@layout/bottom_nav"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include" />
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
