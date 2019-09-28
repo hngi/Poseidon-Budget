@@ -171,14 +171,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-//    private void loadPrevSlide() {
-//        int prev_slide = viewPager.getCurrentItem()+1;
-//        if (prev_slide < mDots.length) {
-//            viewPager.setCurrentItem(prev_slide);
-//        } else {
-//
-//            mNextBtn.setText("Finish");
-//            mBackBtn.setText("Previous");
-//        }
-//    }
 }

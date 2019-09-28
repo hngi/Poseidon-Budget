@@ -28,8 +28,8 @@ public class DashBoardActivity extends AppCompatActivity {
 
         final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
-        final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
-        final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
+        final String userId = sharedPreferences.getString("USERID","DEFAULT_ID");
+        final String userName = sharedPreferences.getString("USERNAME","DEFAULT_NAME");
 
         userTV.setText(userName);
 

@@ -1,5 +1,6 @@
 package com.gradimut.poseidonbuget;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,6 +14,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.gradimut.poseidonbuget.sql.Database;
+import com.gradimut.poseidonbuget.sql.DatabaseHelper;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,11 +26,17 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     private EditText budgetName, budgetAmount, firstET, secondET, thirdET, fourthET;
     private Spinner spinerOne, spinnerTwo, spinnerThree, spinnerFour;
 
+//    final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new);
+
+
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
 
         budgetAmount = findViewById(R.id.budgetAmount);
         budgetName = findViewById(R.id.budgetName);
@@ -46,14 +56,6 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
         mAddbugdet = findViewById(R.id.add_budget_btn);
 
-        // Get EditText value
-        String _budgetName = budgetName.getText().toString().trim();
-        String _budgetAmount = budgetAmount.getText().toString().trim();
-        String _firstEt = firstET.getText().toString().trim();
-        String _secondEt = secondET.getText().toString().trim();
-        String _thirdEt = thirdET.getText().toString().trim();
-        String _fourthEt = fourthET.getText().toString().trim();
-
         // Spinner click lister
         spinerOne.setOnItemSelectedListener(this);
         spinnerTwo.setOnItemSelectedListener(this);
@@ -62,11 +64,10 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
         // Spinner Drop down menu
         List<Integer> priorities = new ArrayList<>();
+        priorities.add(0);
         priorities.add(1);
         priorities.add(2);
         priorities.add(3);
-        priorities.add(4);
-        priorities.add(5);
 
         // Create Adapter for spinner
         ArrayAdapter<Integer> dataAdapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, priorities);
@@ -81,25 +82,315 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
         spinnerFour.setAdapter(dataAdapter);
 
 
-
-
-
         mAddbugdet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String one = spinerOne.getSelectedItem().toString();
-                String two = spinnerTwo.getSelectedItem().toString();
-                String three = spinnerThree.getSelectedItem().toString();
-                String four = spinnerFour.getSelectedItem().toString();
-                final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
-                final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
-                final String userName = sharedPreferences.getString("USERNAME","DEFAULT_EMAIL");
+                DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+
+                ContentValues values = new ContentValues();
+
+                String _bugdetAmount = budgetAmount.getText().toString().trim();
+                String _budgetName = budgetName.getText().toString().trim();
+
+                String _firstEt = firstET.getText().toString().trim();
+                String _secondEt = secondET.getText().toString().trim();
+                String _thirdEt = thirdET.getText().toString().trim();
+                String _fourthEt = fourthET.getText().toString().trim();
 
 
-                Toast.makeText(getApplicationContext(), one + " " + two + " " + three + " " + four + " " + userName, Toast.LENGTH_LONG).show();
+                int one = Integer.parseInt(spinerOne.getSelectedItem().toString());
+                int two = Integer.parseInt(spinnerTwo.getSelectedItem().toString());
+                int three = Integer.parseInt(spinnerThree.getSelectedItem().toString());
+                int four = Integer.parseInt(spinnerFour.getSelectedItem().toString());
+                float allocate;
 
-//                Toast.makeText(getApplicationContext(), firstET.getText().toString(), Toast.LENGTH_LONG).show();
+
+                    if (_budgetName.isEmpty()) {
+                        Toast.makeText(getApplicationContext(), "Budget name field should not be empty!!", Toast.LENGTH_SHORT).show();
+                        budgetName.requestFocus();
+                    }
+
+                    else {
+                        // First Input
+                        if (one == 1 ) {
+
+                            allocate = (float) 5 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _firstEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, one);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+
+
+                        }
+
+                        if (one == 2 ) {
+
+                            allocate = (float) 10 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _firstEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, one);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                        }
+
+                        if (one == 3 ) {
+
+                            allocate = (float) 15 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _firstEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, one);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        // Second Input
+
+                        if (two == 1 ) {
+
+                            allocate = (float) 5 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _secondEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, two);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (two == 2 ) {
+
+                            allocate = (float) 10 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _secondEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, two);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (two == 3 ) {
+
+                            allocate = (float) 15 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _secondEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, two);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        // Third Input
+
+                        if (three == 1 ) {
+
+                            allocate = (float) 5 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _thirdEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, three);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (three == 2 ) {
+
+                            allocate = (float) 10 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _thirdEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, three);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (three == 3 ) {
+
+                            allocate = (float) 15 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _thirdEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, three);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        // Fourth input
+
+                        if (four == 1 ) {
+
+                            allocate = (float) 5 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _fourthEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, four);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (four == 2 ) {
+
+                            allocate = (float) 10 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _fourthEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, four);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+                        if (four == 3 ) {
+
+                            allocate = (float) 15 / 100 * Integer.parseInt(_bugdetAmount);
+
+                            // Inserting data into budget database
+                            values.put(Database.Budget.COLUMN_BUDGET_NAME, _budgetName);
+                            values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, _bugdetAmount);
+                            values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                            // Insert to the budegt Db
+                            long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                            // Inserting data into Items database
+                            values.put(Database.Items.COLUMN_ITEM_NAME, _fourthEt);
+                            values.put(Database.Items.COLUMN_PRIORITY, four);
+                            values.put(Database.Items.COLUMN_BUDGET_ALLOCATE, allocate);
+                            values.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+
+                            // Insert to the budegt Db
+                            databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+                        }
+
+
+                    }
+
+
             }
         });
 
@@ -109,6 +400,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
 
     }
+
 
 
 

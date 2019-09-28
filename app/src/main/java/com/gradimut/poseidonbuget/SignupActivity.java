@@ -78,6 +78,8 @@ public class SignupActivity extends AppCompatActivity {
                     } else {
                         try {
 
+                            // Got through the Db
+
                             String[] strColumns = {
                                     Database.UserTable.COLUMN_USER_ID,
                             };
@@ -98,6 +100,8 @@ public class SignupActivity extends AppCompatActivity {
 
                             int cursorCount = cursor.getCount();
 
+                            // Check if user exist
+
                             if (cursorCount >= 1) {
                                 cursor.close();
                                 Toast.makeText(getApplicationContext(), "User exist!!", Toast.LENGTH_LONG).show();
@@ -107,6 +111,7 @@ public class SignupActivity extends AppCompatActivity {
                                 values.put(Database.UserTable.COLUMN_USER_NAME, username);
                                 values.put(Database.UserTable.COLUMN_USER_PASSWORD, pass);
 
+                                // Insert to the Db
                                 long userId =  databaseHelper.Insert(Database.UserTable.TABLE_USER, values);
 
 
@@ -119,8 +124,10 @@ public class SignupActivity extends AppCompatActivity {
 
                                 editor.apply();
 
+                                // Clear user input
                                 emptyInputEditText();
 
+                                // go to the next activity
                                 Intent intent = new Intent(SignupActivity.this, DashBoardActivity.class);
                                 startActivity(intent);
                                 finish();
