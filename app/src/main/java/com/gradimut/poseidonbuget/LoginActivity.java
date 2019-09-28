@@ -52,75 +52,77 @@ public class LoginActivity extends AppCompatActivity {
                     if (pass.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
                         mPassword.requestFocus();
-                    }
-                    try {
+                    } else {
+                        try {
 
-                        String[] strColumns = {
-                                Database.UserTable.COLUMN_USER_ID,
-                        };
+                            String[] strColumns = {
+                                    Database.UserTable.COLUMN_USER_ID,
+                            };
 
-                        String whereClause = Database.UserTable.COLUMN_USER_EMAIL + " = ? " + " AND " + Database.UserTable.COLUMN_USER_PASSWORD + " = ? ";
-
-
-                        String[] whereArgs = {email, pass};
-
-                        Cursor cursor = databaseHelper.read(
-                                Database.UserTable.TABLE_USER,
-                                strColumns,
-                                whereClause,
-                                whereArgs,
-                                null,
-                                null,
-                                null
-                        );
-
-                        int cursorCount = cursor.getCount();
+                            String whereClause = Database.UserTable.COLUMN_USER_EMAIL + " = ? " + " AND " + Database.UserTable.COLUMN_USER_PASSWORD + " = ? ";
 
 
-                        if (cursorCount >= 1) {
+                            String[] whereArgs = {email, pass};
 
-                            String search = " SELECT " + Database.UserTable.COLUMN_USER_ID + ", " +
-                                    Database.UserTable.COLUMN_USER_NAME + " FROM " + Database.UserTable.TABLE_USER +
-                                    " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";;
+                            Cursor cursor = databaseHelper.read(
+                                    Database.UserTable.TABLE_USER,
+                                    strColumns,
+                                    whereClause,
+                                    whereArgs,
+                                    null,
+                                    null,
+                                    null
+                            );
+
+                            int cursorCount = cursor.getCount();
+
+
+                            if (cursorCount >= 1) {
+
+                                String search = " SELECT " + Database.UserTable.COLUMN_USER_ID + ", " +
+                                        Database.UserTable.COLUMN_USER_NAME + " FROM " + Database.UserTable.TABLE_USER +
+                                        " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";;
 //                            String db = Database.DATABASE_NAME;
 //                            String db = databaseHelper.getWritableDatabase();
 
-                            Cursor cursorSearch = databaseHelper.getWritableDatabase().rawQuery(search, null);
+                                Cursor cursorSearch = databaseHelper.getWritableDatabase().rawQuery(search, null);
 
-                            if (cursorSearch.moveToFirst()) {
-                                do {
-                                    String id = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_ID)));
-                                    String userName = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_NAME)));
+                                if (cursorSearch.moveToFirst()) {
+                                    do {
+                                        String id = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_ID)));
+                                        String userName = cursorSearch.getString((cursorSearch.getColumnIndex(Database.UserTable.COLUMN_USER_NAME)));
 
-                                    SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
-                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                        SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = sharedPreferences.edit();
 
-                                    editor.putString("USERID", id);
-                                    editor.putString("USERNAME", userName);
-                                    editor.putBoolean("isLoggedIn",true);
+                                        editor.putString("USERID", id);
+                                        editor.putString("USERNAME", userName);
+                                        editor.putBoolean("isLoggedIn",true);
 
-                                    editor.apply();
-                                } while (cursorSearch.moveToNext());
+                                        editor.apply();
+                                    } while (cursorSearch.moveToNext());
+
+                                } else {
+                                    Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
+                                }
+
+                                cursorSearch.close();
+
+
+
+                                cursor.close();
+                                Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
+                                startActivity(intent);
+                                finish();
 
                             } else {
-                                Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_LONG).show();
                             }
 
-                            cursorSearch.close();
-
-
-
-                            cursor.close();
-                            Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
-                            startActivity(intent);
-                            finish();
-
-                        } else {
-                            Toast.makeText(getApplicationContext(), "Incorrect email or password", Toast.LENGTH_LONG).show();
+                        } catch (Exception e) {
+                            Log.d("Singin", "onClick: " + e.getMessage());
                         }
 
-                    } catch (Exception e) {
-                        Log.d("Singin", "onClick: " + e.getMessage());
                     }
 
             }

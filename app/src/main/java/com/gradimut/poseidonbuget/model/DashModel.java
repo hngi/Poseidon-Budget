@@ -1,4 +1,4 @@
-package com.gradimut.poseidonbuget;
+package com.gradimut.poseidonbuget.model;
 
 public class DashModel {
     private int image;

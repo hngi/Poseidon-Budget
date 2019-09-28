@@ -12,6 +12,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.gradimut.poseidonbuget.model.DashModel;
+
 import java.util.ArrayList;
 
 public class DashBoardActivity extends AppCompatActivity {

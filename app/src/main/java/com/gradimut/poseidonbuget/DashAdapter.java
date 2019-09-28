@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gradimut.poseidonbuget.model.DashModel;
+
 import java.util.ArrayList;
 
 public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {

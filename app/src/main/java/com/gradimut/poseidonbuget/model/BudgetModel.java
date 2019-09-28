@@ -1,11 +1,11 @@
-package com.gradimut.poseidonbuget;
+package com.gradimut.poseidonbuget.model;
 
 public class BudgetModel {
-    private String name, cost;
+    private String name, amount;
 
-    public BudgetModel(String name, String cost) {
+    public BudgetModel(String name, String amount) {
         this.name = name;
-        this.cost = cost;
+        this.amount = amount;
     }
 
 
@@ -17,11 +17,11 @@ public class BudgetModel {
         this.name = name;
     }
 
-    public String getCost() {
-        return cost;
+    public String getAmount() {
+        return amount;
     }
 
-    public void setCost(String total) {
-        this.cost = cost;
+    public void setAmount(String total) {
+        this.amount = amount;
     }
 }

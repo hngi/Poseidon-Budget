@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gradimut.poseidonbuget.model.BudgetModel;
+
 import java.util.ArrayList;
 
 public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder> {
@@ -41,7 +43,7 @@ public class BudgetAdapter extends RecyclerView.Adapter<BudgetAdapter.ViewHolder
         cost = viewHolder.item_cost;
 
         itemName.setText(budgetItem.getName());
-        cost.setText(budgetItem.getCost());
+        cost.setText(budgetItem.getAmount());
     }
 
     @Override
