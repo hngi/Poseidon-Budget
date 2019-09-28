@@ -29,7 +29,6 @@ public class BudgetActivity extends AppCompatActivity {
         String date = formatter.format(today);
         tvDate.setText(date);
         navSetUp();
-        // setNavigationMenu();
     }
 
     public void dashboardBtn_onClick(View view) {
@@ -54,20 +53,4 @@ public class BudgetActivity extends AppCompatActivity {
         mNavCard = findViewById(R.id.profile_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
     }
-    /*private void setNavigationMenu() {
-
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_add_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_history_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_home_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_person_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-
-    }*/
 }

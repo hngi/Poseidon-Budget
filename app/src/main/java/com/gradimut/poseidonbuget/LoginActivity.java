@@ -3,9 +3,8 @@ package com.gradimut.poseidonbuget;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,7 +12,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gradimut.poseidonbuget.model.Users;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 
@@ -81,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             String search = " SELECT " + Database.UserTable.COLUMN_USER_ID + ", " +
                                     Database.UserTable.COLUMN_USER_NAME + " FROM " + Database.UserTable.TABLE_USER +
-                                    " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";;
+                                    " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";
 //                            String db = Database.DATABASE_NAME;
 //                            String db = databaseHelper.getWritableDatabase();
 
