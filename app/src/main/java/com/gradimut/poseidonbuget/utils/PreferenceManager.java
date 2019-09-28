@@ -27,11 +27,7 @@ public class PreferenceManager {
 
     public boolean checkPreference() {
         boolean status = false;
-        if (sharedPreferences.getString(context.getString(R.string.my_pref_key), "null").isEmpty()) {
-            status = false;
-        } else {
-            status = true;
-        }
+        status = !sharedPreferences.getString(context.getString(R.string.my_pref_key), "null").isEmpty();
 
         return status;
     }
