@@ -32,7 +32,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     public void dashboardBtn_onClick(View view) {
-        Intent intent = new Intent(view.getContext(), HistoryActivity.class);
+        Intent intent = new Intent(view.getContext(), DashBoardActivity.class);
         startActivity(intent);
     }
 
