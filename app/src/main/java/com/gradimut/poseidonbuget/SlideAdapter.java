@@ -24,15 +24,15 @@ public class SlideAdapter extends PagerAdapter {
 
     // Setup list of title
     public String[] lst_title = {
-            "Never again will you spend on the wrong things",
-            "Spend your money on the things that matter"
+            "Save time",
+            "Spend wisely"
 
     };
 
     // Setup list of description.
     public String[] lst_description = {
-            "plan your expenditures with our state of the art algorithm",
-            "ever wondered what your life would be like if you buy the right things first?"
+            "no more long hours of calculations and brain cracking",
+            "improve your lifestyle by spending on important things first!"
     };
 
     // Setup list of background color
