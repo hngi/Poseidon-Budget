@@ -24,15 +24,15 @@ public class SlideAdapter extends PagerAdapter {
 
     // Setup list of title
     public String[] lst_title = {
-            "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet"
+            "Never again will you spend on the wrong things",
+            "Spend your money on the things that matter"
 
     };
 
     // Setup list of description.
     public String[] lst_description = {
-            "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            "plan your expenditures with our state of the art algorithm",
+            "ever wondered what your life would be like if you buy the right things first?"
     };
 
     // Setup list of background color
