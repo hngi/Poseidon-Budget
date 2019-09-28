@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 
 public class AddNewActivity extends AppCompatActivity {
 
@@ -34,6 +35,12 @@ public class AddNewActivity extends AppCompatActivity {
     public void historyBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
+    }
+
+    public void addItem_onClick(View view) {
+        LinearLayout parent = findViewById(R.id.itemLayout);
+        View item = getLayoutInflater().inflate(R.layout.input_item, null);
+        parent.addView(item);
     }
 
     public void navSetUp() {

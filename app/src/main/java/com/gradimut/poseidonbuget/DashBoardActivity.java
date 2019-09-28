@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -28,6 +29,8 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
+        ImageView imgView = findViewById(R.id.imageView);
+        imgView.setColorFilter(Color.argb(255, 255, 255, 255));
         navSetUp();
 
         TextView userTV = findViewById(R.id.tvUsername);
