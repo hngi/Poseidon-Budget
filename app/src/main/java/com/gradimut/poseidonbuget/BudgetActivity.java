@@ -63,6 +63,8 @@ public class BudgetActivity extends AppCompatActivity {
         moneyTxtView = findViewById(R.id.moneyTxtView);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 
