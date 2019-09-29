@@ -187,8 +187,10 @@ public class BudgetActivity extends AppCompatActivity {
                     String itemName = cursor.getString(cursor.getColumnIndex(Database.Items.COLUMN_ITEM_NAME));
                     String budgetAllocate = cursor.getString(cursor.getColumnIndex(Database.Items.COLUMN_BUDGET_ALLOCATE));
 
+                    float transform = Float.parseFloat(budgetAllocate);
+                    int trans = (int) transform;
                     item.setItemName(itemName);
-                    item.setBudgetAllocate(budgetAllocate);
+                    item.setBudgetAllocate("N " + trans);
 
                     itmList.add(item);
                     itemAdapter.notifyDataSetChanged();
