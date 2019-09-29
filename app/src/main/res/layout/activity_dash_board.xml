@@ -84,6 +84,7 @@
                 android:fontFamily="@font/oxygen"
                 android:textColor="#ffffff"
                 android:textSize="30sp"
+                android:id="@+id/am"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4"
@@ -135,8 +136,7 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_history"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:listitem="@layout/single_item">
+            android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
     </android.support.v4.widget.NestedScrollView>

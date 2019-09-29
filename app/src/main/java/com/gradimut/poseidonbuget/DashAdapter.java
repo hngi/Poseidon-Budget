@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.gradimut.poseidonbuget.model.DashModel;
+
 import java.util.ArrayList;
 
 public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
@@ -59,7 +61,7 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            item_salary = itemView.findViewById(R.id.tvFirst);
+            item_salary = itemView.findViewById(R.id.tvTxt);
             item_date = itemView.findViewById(R.id.tvDate);
             item_total = itemView.findViewById(R.id.tvTotal);
         }

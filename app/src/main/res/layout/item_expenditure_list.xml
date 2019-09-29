@@ -12,7 +12,7 @@
         android:layout_marginBottom="16dp">
 
         <TextView
-            android:id="@+id/text_item"
+            android:id="@+id/itemExId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -35,7 +35,7 @@
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.923"
-            app:layout_constraintStart_toEndOf="@+id/text_item"
+            app:layout_constraintStart_toEndOf="@+id/itemExId"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="N10,000" />
 

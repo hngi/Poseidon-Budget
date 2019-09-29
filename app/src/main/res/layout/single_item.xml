@@ -8,16 +8,15 @@
     android:paddingTop="8dp"
     android:paddingBottom="8dp">
 
-    <ImageButton
-        android:id="@+id/profile_nav_btn"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-
-        android:background="@drawable/history_shape"
-        android:contentDescription="@string/profile_nav"
-        android:src="@drawable/coins" />
+    <!--<ImageButton-->
+        <!--android:id="@+id/profile_nav_btn"-->
+        <!--style="?android:attr/borderlessButtonStyle"-->
+        <!--android:layout_width="48dp"-->
+        <!--android:layout_height="48dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:background="@drawable/history_shape"-->
+        <!--android:contentDescription="@string/profile_nav"-->
+        <!--android:src="@drawable/coins" />-->
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
         android:layout_marginStart="24dp">
 
         <TextView
-            android:id="@+id/tvFirst"
+            android:id="@+id/tvTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -62,8 +61,8 @@
             android:textColor="#A7A7A7"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvFirst"
-            app:layout_constraintTop_toBottomOf="@+id/tvFirst"
+            app:layout_constraintStart_toStartOf="@+id/tvTxt"
+            app:layout_constraintTop_toBottomOf="@+id/tvTxt"
             app:layout_constraintVertical_bias="0.272" />
     </android.support.constraint.ConstraintLayout>
 </LinearLayout>
