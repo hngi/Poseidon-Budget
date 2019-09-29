@@ -109,7 +109,6 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 // Insert to the budegt Db
                                 long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
                                 Log.d("BudgetId : ", String.valueOf(budgetId));
-                                Toast.makeText(getApplicationContext(), "Check this : " + (int) budgetId, Toast.LENGTH_LONG).show();
 
                                 // Inserting data into Items database
                                 values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
@@ -153,7 +152,6 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
 
                                 Log.d("BudgetId : ", String.valueOf(budgetId));
-                                Toast.makeText(getApplicationContext(), "Check this : " + (int) budgetId, Toast.LENGTH_LONG).show();
 
                                 // Inserting data into Items database
                                 values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
@@ -163,7 +161,6 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
-
                                 Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
                                 startActivity(intent);
                             } catch (Exception e) {
