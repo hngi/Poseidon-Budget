@@ -91,7 +91,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                     if (spinnerItem.equals("High")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
@@ -134,7 +134,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                     else if (spinnerItem.equals("Medium")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             ContentValues values = new ContentValues();
@@ -178,7 +178,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                     else if (spinnerItem.equals("Low")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             ContentValues values = new ContentValues();
@@ -238,6 +238,10 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     public void historyBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
+    }
+
+    public void addBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {

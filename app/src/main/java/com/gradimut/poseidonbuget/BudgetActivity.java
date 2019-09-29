@@ -3,7 +3,6 @@ package com.gradimut.poseidonbuget;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -20,6 +19,7 @@ import com.gradimut.poseidonbuget.model.ItemModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -121,8 +121,10 @@ public class BudgetActivity extends AppCompatActivity {
                 if (cursorSearch.moveToFirst()) {
                     do {
                         String amount = cursorSearch.getString((cursorSearch.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT)));
-
-                        moneyTxtView.setText(amount);
+                        double amnt = Double.parseDouble(amount);
+                        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+                        String moneyString = formatter.format(amnt);
+                        moneyTxtView.setText(moneyString);
 
                     } while (cursorSearch.moveToNext());
 
@@ -207,6 +209,10 @@ public class BudgetActivity extends AppCompatActivity {
     public void historyBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
+    }
+
+    public void profileBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {

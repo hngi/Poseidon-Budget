@@ -31,8 +31,8 @@ public class SlideAdapter extends PagerAdapter {
 
     // Setup list of description.
     public String[] lst_description = {
-            "no more long hours of calculations and brain cracking",
-            "improve your lifestyle by spending on important things first!"
+            "No more long hours of calculations and brain cracking",
+            "Improve your lifestyle by spending on important things first!"
     };
 
     // Setup list of background color

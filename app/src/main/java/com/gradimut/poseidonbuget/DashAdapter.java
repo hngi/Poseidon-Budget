@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.gradimut.poseidonbuget.model.DashModel;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
@@ -48,7 +49,10 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
         salary.setText(salaryItem.getSalary());
         currency.setText(salaryItem.getCurrency());
         date.setText(salaryItem.getDate());
-        total.setText(salaryItem.getTotal());
+        double amnt = Double.parseDouble(salaryItem.getTotal());
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        String moneyString = formatter.format(amnt);
+        total.setText(moneyString);
     }
 
     @Override
