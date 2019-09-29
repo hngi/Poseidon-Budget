@@ -78,10 +78,6 @@ public class DashBoardActivity extends AppCompatActivity {
 //        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
 
         rv.setLayoutManager(rvLayout);
-
-        // DashAdapter adapter = new DashAdapter(this, dashList);
-        // rv.setAdapter(adapter);
-
     }
 
     private void checkIt() {
@@ -223,7 +219,6 @@ public class DashBoardActivity extends AppCompatActivity {
     public void navSetUp() {
         mNavBtn = findViewById(R.id.home_nav_btn);
         mNavBtn.setColorFilter(Color.argb(255, 255, 255, 255));
-        //mNavBtn.setImageResource(R.drawable.ic_add_white_24dp);
         mNavCard = findViewById(R.id.home_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
     }

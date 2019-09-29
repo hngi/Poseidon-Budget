@@ -1,18 +1,15 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -170,15 +167,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             loadNextActivity();
         }
     }
-
-//    private void loadPrevSlide() {
-//        int prev_slide = viewPager.getCurrentItem()+1;
-//        if (prev_slide < mDots.length) {
-//            viewPager.setCurrentItem(prev_slide);
-//        } else {
-//
-//            mNextBtn.setText("Finish");
-//            mBackBtn.setText("Previous");
-//        }
-//    }
 }

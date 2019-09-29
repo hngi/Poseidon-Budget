@@ -24,15 +24,15 @@ public class SlideAdapter extends PagerAdapter {
 
     // Setup list of title
     public String[] lst_title = {
-            "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet"
+            "Save time",
+            "Spend wisely"
 
     };
 
     // Setup list of description.
     public String[] lst_description = {
-            "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-            "consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+            "no more long hours of calculations and brain cracking",
+            "improve your lifestyle by spending on important things first!"
     };
 
     // Setup list of background color
@@ -58,7 +58,7 @@ public class SlideAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+        inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         View view = inflater.inflate(R.layout.slideview, container,false);
         LinearLayout layoutSlide = view.findViewById(R.id.slideLinearLayout);
