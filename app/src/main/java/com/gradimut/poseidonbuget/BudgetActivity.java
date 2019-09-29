@@ -147,6 +147,10 @@ public class BudgetActivity extends AppCompatActivity {
 
     private void populateBudget() {
 
+        final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+
 
         try {
 
@@ -157,11 +161,15 @@ public class BudgetActivity extends AppCompatActivity {
                     Database.Items.COLUMN_BUDGET_ALLOCATE,
             };
 
+            String whereClause = Database.Items.COLUMN_USER_ID + " = ? ";
+
+            String[] whereArgs = {userId};
+
             Cursor cursor = databaseHelper.read(
                     Database.Items.TABLE_NAME,
                     strColumns,
-                    null,
-                    null,
+                    whereClause,
+                    whereArgs,
                     null,
                     null,
                     null

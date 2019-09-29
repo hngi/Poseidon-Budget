@@ -145,6 +145,10 @@ public class DashBoardActivity extends AppCompatActivity {
     private void populate() {
         try {
 
+            final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+            final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+
             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
 
             String[] strColumns = {
@@ -153,11 +157,16 @@ public class DashBoardActivity extends AppCompatActivity {
                     Database.Budget.COLUMN_DATETIME,
             };
 
+            String whereClause = Database.Budget.COLUMN_USER_ID + " = ? ";
+
+
+            String[] whereArgs = {userId};
+
             Cursor cursor = databaseHelper.read(
                     Database.Budget.TABLE_NAME,
                     strColumns,
-                    null,
-                    null,
+                    whereClause,
+                    whereArgs,
                     null,
                     null,
                     null
