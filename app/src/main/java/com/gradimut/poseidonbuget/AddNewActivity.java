@@ -75,6 +75,8 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                 DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                 ContentValues values = new ContentValues();
 
+                SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
 
                 String budgetName = mBudgetName.getText().toString().trim();
                 String budgetAmount = mBudgetAmout.getText().toString().trim();
@@ -84,6 +86,9 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                 values.put(Database.Budget.COLUMN_USER_ID, userId);
 
                 long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                editor.putString("BUDGET_ID", String.valueOf(budgetId));
+                editor.apply();
 
 
                 for (int i = 0; i < rootLayout.getChildCount(); i++) {

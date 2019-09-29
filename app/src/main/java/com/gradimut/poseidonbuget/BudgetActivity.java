@@ -150,6 +150,10 @@ public class BudgetActivity extends AppCompatActivity {
         final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
         final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+        final String budg = sharedPreferences2.getString("BUDGET_ID","DEFAULT_BUDG");
+
+        Log.d("populateBudget 3 : ", budg);
+
 
 
         try {
@@ -161,9 +165,9 @@ public class BudgetActivity extends AppCompatActivity {
                     Database.Items.COLUMN_BUDGET_ALLOCATE,
             };
 
-            String whereClause = Database.Items.COLUMN_USER_ID + " = ? ";
+            String whereClause = Database.Items.COLUMN_USER_ID + " = ? " + " AND "  + Database.Items.COLUMN_BUDGET_ID + " = ? ";
 
-            String[] whereArgs = {userId};
+            String[] whereArgs = {userId, budg};
 
             Cursor cursor = databaseHelper.read(
                     Database.Items.TABLE_NAME,
