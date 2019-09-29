@@ -23,13 +23,17 @@
             android:text="@string/already_nhave_an_naccount"
             android:textColor="@color/dark"
             android:textSize="26sp" />
+
         <ImageView
-            android:layout_width="232dp"
+            android:id="@+id/firstImg"
+            android:layout_width="224dp"
             android:layout_height="180dp"
-            android:layout_marginEnd="24dp"
-            android:src="@drawable/img_1"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="70dp"/>
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginEnd="24dp"
+            android:layout_toEndOf="@+id/firstTxt"
+            android:src="@drawable/img_1" />
 
     </RelativeLayout>
 

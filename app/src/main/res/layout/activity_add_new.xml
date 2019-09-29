@@ -7,6 +7,16 @@
     tools:context=".AddNewActivity">
 
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:progressBarStyleLarge"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.v7.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -193,10 +203,23 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_marginBottom="10dp"
-            android:layout_marginStart="40dp"
             android:paddingBottom="8dp">
 
+            <include
+                android:id="@+id/include"
+                layout="@layout/one_item" />
 
+            <include
+                android:id="@+id/include"
+                layout="@layout/one_item" />
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/one_item" />
+
+            <include
+                android:id="@+id/include"
+                layout="@layout/one_item" />
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

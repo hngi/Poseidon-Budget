@@ -22,6 +22,7 @@
             android:layout_height="36dp"
             android:layout_marginStart="24dp"
             android:contentDescription="@string/back_button"
+            android:onClick="back_onClick"
             android:src="@drawable/ic_arrow_back_black_24dp"
             app:layout_constraintBottom_toBottomOf="@+id/textView"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,13 +49,13 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/oxygen"
+            android:text="@string/no_money"
             android:textColor="#ffffff"
             android:textSize="36sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:text="@string/no_money" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
             android:id="@+id/dateTxtView"
@@ -63,13 +64,13 @@
             android:layout_marginTop="82dp"
             android:layout_marginBottom="78dp"
             android:fontFamily="@font/oxygen"
-            android:textColor="#c4c4c4"
             android:text="@string/currenct_date"
+            android:textColor="#c4c4c4"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            android:textSize="18sp" />
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
     </android.support.constraint.ConstraintLayout>
@@ -118,32 +119,32 @@
             app:layout_constraintEnd_toEndOf="@+id/budetRV"
             app:layout_constraintStart_toStartOf="@+id/budetRV"
             app:layout_constraintTop_toTopOf="@+id/budetRV" />
-        
+
         <android.support.v7.widget.RecyclerView
-            android:visibility="invisible"
             android:id="@+id/budetRV"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="280dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="72dp"
             android:layout_marginEnd="36dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
         </android.support.v7.widget.RecyclerView>
         <!--<include-->
-            <!--android:id="@+id/include"-->
-            <!--layout="@layout/content_expenditure_list"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="240dp"-->
-            <!--android:layout_marginStart="24dp"-->
-            <!--android:layout_marginTop="72dp"-->
-            <!--android:layout_marginEnd="36dp"-->
-            <!--app:layout_constraintBottom_toTopOf="@+id/card_view"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
+        <!--android:id="@+id/include"-->
+        <!--layout="@layout/content_expenditure_list"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="240dp"-->
+        <!--android:layout_marginStart="24dp"-->
+        <!--android:layout_marginTop="72dp"-->
+        <!--android:layout_marginEnd="36dp"-->
+        <!--app:layout_constraintBottom_toTopOf="@+id/card_view"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent" />-->
 
         <include
             android:id="@+id/include2"

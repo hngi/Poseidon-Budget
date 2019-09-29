@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -31,12 +33,16 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     private View child;
     private EditText mItemName, mBudgetName, mBudgetAmout;
     private Spinner mSpinner;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_new);
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
         final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
@@ -86,19 +92,19 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                     float allocate;
 
 
-                    boolean condition = itemName.isEmpty() || budgetName.isEmpty() || budgetAmount.isEmpty();
+                    boolean condition = budgetName.isEmpty() || budgetAmount.isEmpty();
 
 
                     if (spinnerItem.equals("High")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
                             ContentValues values = new ContentValues();
                             ContentValues values2 = new ContentValues();
 
-                            allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 25 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
                                 // Inserting data into budget database
@@ -133,13 +139,13 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                     else if (spinnerItem.equals("Medium")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             ContentValues values = new ContentValues();
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
                             ContentValues values2 = new ContentValues();
-                            allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
 
                             try {
@@ -175,7 +181,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                     else if (spinnerItem.equals("Low")) {
                         if (condition){
-                            Toast.makeText(getApplicationContext(), "Can't save null input", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
                             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             ContentValues values = new ContentValues();
@@ -183,7 +189,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                             ContentValues values2 = new ContentValues();
 
 
-                            allocate = (float) 5 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
                                 // Inserting data into budget database
@@ -204,8 +210,18 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
 
-                                Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
-                                startActivity(intent);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        progressBar = findViewById(R.id.progressBar);
+                                        progressBar.setVisibility(View.VISIBLE);
+                                        Intent i = new Intent(AddNewActivity.this, BudgetActivity.class);
+                                        startActivity(i);
+                                    }
+                                }, 2000);
+                                //Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
+                                //startActivity(intent);
                             } catch (Exception e) {
                                 Log.d("Saving : ", e.getMessage());
                                  Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
@@ -235,6 +251,10 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     public void historyBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
+    }
+
+    public void addBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {
