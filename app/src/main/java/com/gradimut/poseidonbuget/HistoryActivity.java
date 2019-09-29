@@ -43,6 +43,8 @@ public class HistoryActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.tvNoBudget);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 

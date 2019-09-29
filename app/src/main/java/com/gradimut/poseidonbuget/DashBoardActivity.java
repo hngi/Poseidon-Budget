@@ -53,6 +53,8 @@ public class DashBoardActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.tvNoBudget);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 
@@ -68,14 +70,6 @@ public class DashBoardActivity extends AppCompatActivity {
         userTV.setText(userName);
 
         rv = findViewById(R.id.recycler_history);
-
-//        dashList = new ArrayList<>();
-//        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"November salary", "2 November", "Naira","100000"));
-//        dashList.add(new DashModel(R.drawable.coins,"January salary", "24 January", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"December salary", "03 December", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"August salary", "24 August", "Naira","200000"));
-//        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
 
         rv.setLayoutManager(rvLayout);
     }
