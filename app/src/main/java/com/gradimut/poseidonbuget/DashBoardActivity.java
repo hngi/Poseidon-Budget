@@ -77,7 +77,7 @@ public class DashBoardActivity extends AppCompatActivity {
 //        dashList.add(new DashModel(R.drawable.coins,"August salary", "24 August", "Naira","200000"));
 //        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
 
-        rv.setLayoutManager(rvLayout).setReverseLayout(true);
+        rv.setLayoutManager(rvLayout);
     }
 
     private void checkIt() {
