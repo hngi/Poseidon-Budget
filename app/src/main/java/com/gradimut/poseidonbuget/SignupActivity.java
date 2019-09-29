@@ -1,5 +1,6 @@
 package com.gradimut.poseidonbuget;
 
+import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,10 +29,16 @@ public class SignupActivity extends AppCompatActivity {
     private DatabaseHelper databaseHelper;
     private Users user;
 
+    private ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
+
+        progressDialog = new ProgressDialog(this);
+
 
         etLog = findViewById(R.id.txtLogin);
         mUsername = findViewById(R.id.etUsername);
@@ -53,6 +60,9 @@ public class SignupActivity extends AppCompatActivity {
                 String username = mUsername.getText().toString().trim();
                 String pass = mPassword.getText().toString().trim();
                 String confirmPass = mConfirmPass.getText().toString().trim();
+
+                progressDialog.setMessage("Logging...");
+                progressDialog.show();
 
 
                     if (username.isEmpty()) {

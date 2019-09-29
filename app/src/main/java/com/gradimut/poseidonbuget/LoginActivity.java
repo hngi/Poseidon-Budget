@@ -1,5 +1,6 @@
 package com.gradimut.poseidonbuget;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText mEmail;
     EditText mPassword;
     Button mLoginBtn;
-
+    private ProgressDialog progressDialog;
 
 
 
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        progressDialog = new ProgressDialog(this);
 
         txtLog = findViewById(R.id.txtReg);
         mEmail = findViewById(R.id.logEmail);
@@ -45,6 +48,10 @@ public class LoginActivity extends AppCompatActivity {
                 String email = mEmail.getText().toString().trim();
                 String pass = mPassword.getText().toString().trim();
 
+
+                progressDialog.setMessage("Logging...");
+                progressDialog.show();
+
                     if (email.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Enter E-mail", Toast.LENGTH_SHORT).show();
                         mEmail.requestFocus();
@@ -54,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                         mPassword.requestFocus();
                     } else {
                         try {
+
+
 
                             String[] strColumns = {
                                     Database.UserTable.COLUMN_USER_ID,
@@ -82,8 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String search = " SELECT " + Database.UserTable.COLUMN_USER_ID + ", " +
                                         Database.UserTable.COLUMN_USER_NAME + " FROM " + Database.UserTable.TABLE_USER +
                                         " WHERE " + Database.UserTable.COLUMN_USER_EMAIL + " LIKE '%" + email + "%'";;
-//                            String db = Database.DATABASE_NAME;
-//                            String db = databaseHelper.getWritableDatabase();
+
 
                                 Cursor cursorSearch = databaseHelper.getWritableDatabase().rawQuery(search, null);
 
@@ -100,6 +108,8 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putBoolean("isLoggedIn",true);
 
                                         editor.apply();
+//                                        progressDialog.dismiss();
+
                                     } while (cursorSearch.moveToNext());
 
                                 } else {
