@@ -61,7 +61,7 @@ public class SignupActivity extends AppCompatActivity {
                 String pass = mPassword.getText().toString().trim();
                 String confirmPass = mConfirmPass.getText().toString().trim();
 
-                progressDialog.setMessage("Logging...");
+                progressDialog.setMessage("Signing up...");
                 progressDialog.show();
 
 

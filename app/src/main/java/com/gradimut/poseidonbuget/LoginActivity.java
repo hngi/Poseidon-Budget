@@ -52,11 +52,14 @@ public class LoginActivity extends AppCompatActivity {
                 progressDialog.setMessage("Logging...");
                 progressDialog.show();
 
+
                     if (email.isEmpty()) {
+
                         Toast.makeText(getApplicationContext(), "Enter E-mail", Toast.LENGTH_SHORT).show();
                         mEmail.requestFocus();
                     }
                     if (pass.isEmpty()) {
+
                         Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
                         mPassword.requestFocus();
                     } else {
@@ -115,6 +118,8 @@ public class LoginActivity extends AppCompatActivity {
                                 } else {
                                     Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
                                 }
+
+
 
                                 cursorSearch.close();
 

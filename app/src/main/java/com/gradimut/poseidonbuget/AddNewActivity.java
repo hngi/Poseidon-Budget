@@ -163,6 +163,8 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
                                 values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
                                 values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                values2.put(Database.Items.COLUMN_USER_ID, userId);
+
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
@@ -205,6 +207,8 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
                                 values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
                                 values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                values2.put(Database.Items.COLUMN_USER_ID, userId);
+
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);

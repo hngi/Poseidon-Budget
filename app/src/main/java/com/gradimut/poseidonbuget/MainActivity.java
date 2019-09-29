@@ -34,18 +34,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
 
-        if (!userId.isEmpty()) {
+        if (!userId.equals("DEFAULT_NAME")) {
             Intent intent = new Intent(this, DashBoardActivity.class);
             startActivity(intent);
             finish();
-        } else if (new PreferenceManager(this).checkPreference()) {
+        } else {
             loadNextActivity();
-        }
-
-        else {
-            Intent intent = new Intent(this, SplashActivity.class);
-            startActivity(intent);
-            finish();
         }
 
         setContentView(R.layout.activity_main);
