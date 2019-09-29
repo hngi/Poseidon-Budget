@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatImageButton;
@@ -207,8 +208,16 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
 
-                                Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
-                                startActivity(intent);
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+
+                                        Intent i = new Intent(AddNewActivity.this, BudgetActivity.class);
+                                        startActivity(i);
+                                    }
+                                }, 3000);
+                                //Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
+                                //startActivity(intent);
                             } catch (Exception e) {
                                 Log.d("Saving : ", e.getMessage());
                                  Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
