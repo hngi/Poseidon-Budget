@@ -10,6 +10,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,6 +22,7 @@ import com.gradimut.poseidonbuget.model.BudgetModel;
 import com.gradimut.poseidonbuget.model.DashModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
+import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -225,4 +228,36 @@ public class DashBoardActivity extends AppCompatActivity {
         mNavCard = findViewById(R.id.home_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        /*if (id == R.id.action_settings) {
+            return true;
+        }*/
+        if (id == R.id.action_logout) {
+            sharedPreferences.edit().putString("USERID",null).apply();
+            sharedPreferences.edit().putBoolean("isLoggedIn",false).apply();
+            new PreferenceManager(this).checkPreference();
+            Intent i = new Intent(DashBoardActivity.this, LoginActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

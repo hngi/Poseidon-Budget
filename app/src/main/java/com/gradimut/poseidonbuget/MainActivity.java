@@ -1,6 +1,7 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -26,6 +29,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
+
+        if (!userId.isEmpty()) {
+            Intent intent = new Intent(this, DashBoardActivity.class);
+            startActivity(intent);
+            finish();
+        } else if (new PreferenceManager(this).checkPreference()) {
+            loadNextActivity();
+        }
+
+        else {
+            Intent intent = new Intent(this, SplashActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
         setContentView(R.layout.activity_main);
 
         viewPager = findViewById(R.id.viewPager);
@@ -67,6 +89,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mSkipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                new PreferenceManager(getApplicationContext()).writePreference();
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
@@ -147,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.doneBtn :
                 loadNextSlide();
+                new PreferenceManager(this).writePreference();
                 break;
         }
 
