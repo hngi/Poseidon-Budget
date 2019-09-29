@@ -16,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -32,12 +33,16 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     private View child;
     private EditText mItemName, mBudgetName, mBudgetAmout;
     private Spinner mSpinner;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_add_new);
 
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.GONE);
         final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 
         final String userId = sharedPreferences.getString("USERID","DEFAULT_NAME");
@@ -87,7 +92,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                     float allocate;
 
 
-                    boolean condition = itemName.isEmpty() || budgetName.isEmpty() || budgetAmount.isEmpty();
+                    boolean condition = budgetName.isEmpty() || budgetAmount.isEmpty();
 
 
                     if (spinnerItem.equals("High")) {
@@ -99,7 +104,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                             ContentValues values = new ContentValues();
                             ContentValues values2 = new ContentValues();
 
-                            allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 25 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
                                 // Inserting data into budget database
@@ -141,7 +146,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                             ContentValues values = new ContentValues();
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
                             ContentValues values2 = new ContentValues();
-                            allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
 
                             try {
@@ -187,7 +192,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                             ContentValues values2 = new ContentValues();
 
 
-                            allocate = (float) 5 / 100 * Integer.parseInt(budgetAmount);
+                            allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
                                 // Inserting data into budget database
@@ -212,10 +217,12 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                                     @Override
                                     public void run() {
 
+                                        progressBar = findViewById(R.id.progressBar);
+                                        progressBar.setVisibility(View.VISIBLE);
                                         Intent i = new Intent(AddNewActivity.this, BudgetActivity.class);
                                         startActivity(i);
                                     }
-                                }, 3000);
+                                }, 2000);
                                 //Intent intent = new Intent(getApplicationContext(), BudgetActivity.class);
                                 //startActivity(intent);
                             } catch (Exception e) {

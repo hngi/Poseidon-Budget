@@ -118,6 +118,10 @@ public class HistoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void filterBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "We don't have enough data", Toast.LENGTH_LONG).show();
+    }
+
     public void historyBtn_onClick(View view) {
         Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }

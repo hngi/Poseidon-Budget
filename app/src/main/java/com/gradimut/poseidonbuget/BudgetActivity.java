@@ -211,6 +211,10 @@ public class BudgetActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void back_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "Hard beats soft!", Toast.LENGTH_SHORT).show();
+    }
+
     public void profileBtn_onClick(View view) {
         Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }
