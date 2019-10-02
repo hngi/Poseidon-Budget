@@ -44,6 +44,8 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dash_board);
 
+        getSupportActionBar().setTitle("Dashboard"); // for set actionbar title
+
         ImageView imgView = findViewById(R.id.imageView);
         imgView.setColorFilter(Color.argb(255, 255, 255, 255));
         navSetUp();
@@ -143,7 +145,8 @@ public class DashBoardActivity extends AppCompatActivity {
             }
 
         } catch (Exception e) {
-            Log.d("Singin", "onClick: " + e.getMessage());
+            Log.d("checkIt User : ", e.getMessage());
+//            Log.d("Singin", "onClick: " + e.getMessage());
         }
     }
 
@@ -190,7 +193,7 @@ public class DashBoardActivity extends AppCompatActivity {
                     String date = cursor.getString(cursor.getColumnIndex(Database.Budget.COLUMN_DATETIME));
                     String name = cursor.getString(cursor.getColumnIndex(Database.Budget.COLUMN_BUDGET_NAME));
 
-                    item.setAmount(amount);
+                    item.setAmount(Double.parseDouble(amount));
                     item.setDate(date);
                     item.setName(name);
 //                    item.setImage(R.drawable.);
@@ -205,7 +208,7 @@ public class DashBoardActivity extends AppCompatActivity {
             }
         } catch (Exception e) {
             Log.d("populateBudget: ", e.getMessage());
-            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
+//            Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 

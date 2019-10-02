@@ -10,6 +10,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import android.widget.Toast;
 import com.gradimut.poseidonbuget.model.ItemModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
+import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
@@ -41,6 +44,9 @@ public class BudgetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
+
+        getSupportActionBar().setTitle("Dashboard"); // for set actionbar title
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 //
@@ -242,20 +248,35 @@ public class BudgetActivity extends AppCompatActivity {
         mNavCard = findViewById(R.id.profile_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
     }
-    /*private void setNavigationMenu() {
 
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_add_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_history_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_home_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_person_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
 
-    }*/
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        /*if (id == R.id.action_settings) {
+            return true;
+        }*/
+        if (id == R.id.action_logout) {
+            sharedPreferences.edit().putString("USERID",null).apply();
+            sharedPreferences.edit().putBoolean("isLoggedIn",false).apply();
+            new PreferenceManager(this).checkPreference();
+            Intent i = new Intent(BudgetActivity.this, LoginActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }

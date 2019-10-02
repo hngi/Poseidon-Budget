@@ -9,13 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AddNewActivity"></activity>
-        <activity android:name=".HistoryActivity" />
-        <activity android:name=".BudgetActivity" />
+        <activity android:name=".AddNewActivity"
+                android:theme="@style/AppTheme"/>
+        <activity android:name=".HistoryActivity"
+            android:theme="@style/AppTheme"/>
+        <activity android:name=".BudgetActivity"
+                  android:theme="@style/AppTheme"/>
         <activity android:name=".MainActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignupActivity" />
-        <activity android:name=".DashBoardActivity" />
+        <activity
+            android:name=".DashBoardActivity"
+            android:theme="@style/AppTheme"/>
+
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

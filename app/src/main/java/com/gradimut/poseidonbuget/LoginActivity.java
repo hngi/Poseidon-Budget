@@ -47,8 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 String pass = mPassword.getText().toString().trim();
 
 
-                progressDialog.setMessage("Logging...");
-                progressDialog.show();
+
 
 
                     if (email.isEmpty()) {
@@ -61,6 +60,8 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Enter password", Toast.LENGTH_SHORT).show();
                         mPassword.requestFocus();
                     } else {
+                        progressDialog.setMessage("Logging...");
+                        progressDialog.show();
                         try {
 
 
@@ -109,11 +110,13 @@ public class LoginActivity extends AppCompatActivity {
                                         editor.putBoolean("isLoggedIn",true);
 
                                         editor.apply();
-//                                        progressDialog.dismiss();
 
                                     } while (cursorSearch.moveToNext());
+                                    progressDialog.dismiss();
+
 
                                 } else {
+                                    progressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "No data was found in the system!", Toast.LENGTH_LONG).show();
                                 }
 

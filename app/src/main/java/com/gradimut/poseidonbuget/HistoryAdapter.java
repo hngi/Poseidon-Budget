@@ -48,7 +48,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         BudgetModel item = budgetList.get(i);
         viewHolder.tvTxt.setText(item.getName());
-        double amnt = Double.parseDouble(item.getAmount());
+        double amnt = item.getAmount();
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         String moneyString = formatter.format(amnt);
         viewHolder.tvTotal.setText(moneyString);

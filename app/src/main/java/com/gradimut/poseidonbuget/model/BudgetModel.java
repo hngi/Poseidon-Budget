@@ -1,7 +1,8 @@
 package com.gradimut.poseidonbuget.model;
 
 public class BudgetModel {
-    private String name, amount, date;
+    private String name, date;
+    private double amount;
 
     private int image;
 
@@ -29,11 +30,11 @@ public class BudgetModel {
         this.date = date;
     }
 
-    public String getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 }
