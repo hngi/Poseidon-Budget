@@ -5,9 +5,8 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,8 +17,6 @@ import android.widget.Toast;
 import com.gradimut.poseidonbuget.model.Users;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
-
-import java.sql.SQLException;
 
 public class SignupActivity extends AppCompatActivity {
 
@@ -131,6 +128,8 @@ public class SignupActivity extends AppCompatActivity {
 
                                 emptyInputEditText();
 
+
+                                Toast.makeText(getApplicationContext(), "Registration successful, sign in", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(SignupActivity.this, DashBoardActivity.class);
                                 startActivity(intent);
                                 finish();

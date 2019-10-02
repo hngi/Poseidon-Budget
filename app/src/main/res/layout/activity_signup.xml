@@ -24,11 +24,13 @@
             android:layout_marginTop="24dp" />
 
         <ImageView
-            android:layout_width="232dp"
+            android:layout_width="224dp"
             android:layout_height="160dp"
             android:layout_alignParentEnd="true"
+            android:layout_marginStart="9dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="24dp"
+            android:layout_toEndOf="@+id/firstTxt"
             android:src="@drawable/img_1" />
 
     </RelativeLayout>

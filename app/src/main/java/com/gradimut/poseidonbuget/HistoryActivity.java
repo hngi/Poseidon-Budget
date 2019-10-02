@@ -16,7 +16,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gradimut.poseidonbuget.model.BudgetModel;
-import com.gradimut.poseidonbuget.model.ItemModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 
@@ -130,6 +129,13 @@ public class HistoryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void filterBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "We don't have enough data", Toast.LENGTH_LONG).show();
+    }
+
+    public void historyBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
+    }
     public void navSetUp() {
         mNavBtn = findViewById(R.id.history_nav_btn);
         mNavBtn.setColorFilter(Color.argb(255, 255, 255, 255));
