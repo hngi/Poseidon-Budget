@@ -77,17 +77,36 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
                 String itemName;
 
+                // Inserting data into budget database
+                DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                ContentValues values = new ContentValues();
+
+                SharedPreferences sharedPreferences=getSharedPreferences("USER_CREDENTIALS",MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                String budgetName = mBudgetName.getText().toString().trim();
+                String budgetAmount = mBudgetAmout.getText().toString().trim();
+
+                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
+                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
+                values.put(Database.Budget.COLUMN_USER_ID, userId);
+
+                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
+
+                editor.putString("BUDGET_ID", String.valueOf(budgetId));
+                editor.apply();
+
+
                 for (int i = 0; i < rootLayout.getChildCount(); i++) {
                     View view1 = rootLayout.getChildAt(i);
                     mItemName = view1.findViewById(R.id.itemNamess);
                     mSpinner = view1.findViewById(R.id.spinner);
 
-
-
                      spinnerItem = mSpinner.getSelectedItem().toString().trim();
                      itemName = mItemName.getText().toString().trim();
-                     String budgetName = mBudgetName.getText().toString().trim();
-                     String budgetAmount = mBudgetAmout.getText().toString().trim();
+
+
+
 
                     float allocate;
 
@@ -99,28 +118,20 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                         if (condition){
                             Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
-                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
-                            ContentValues values = new ContentValues();
                             ContentValues values2 = new ContentValues();
 
                             allocate = (float) 25 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
-                                // Inserting data into budget database
-                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                                values.put(Database.Budget.COLUMN_USER_ID, userId);
 
-                                // Insert to the budegt Db
-                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
-                                Log.d("BudgetId : ", String.valueOf(budgetId));
 
                                 // Inserting data into Items database
                                 values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
                                 values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
                                 values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
                                 values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                values2.put(Database.Items.COLUMN_USER_ID, userId);
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
@@ -141,29 +152,21 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                         if (condition){
                             Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
-                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
-                            ContentValues values = new ContentValues();
+
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
                             ContentValues values2 = new ContentValues();
                             allocate = (float) 15 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
 
                             try {
-                                // Inserting data into budget database
-                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                                values.put(Database.Budget.COLUMN_USER_ID, userId);
-
-                                // Insert to the budegt Db
-                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
-
-                                Log.d("BudgetId : ", String.valueOf(budgetId));
 
                                 // Inserting data into Items database
                                 values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
                                 values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
                                 values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
                                 values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                values2.put(Database.Items.COLUMN_USER_ID, userId);
+
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);
@@ -183,8 +186,8 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                         if (condition){
                             Toast.makeText(getApplicationContext(), "C'mon.. You have to enter all details", Toast.LENGTH_LONG).show();
                         } else {
-                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
-                            ContentValues values = new ContentValues();
+//                            DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+//                            ContentValues values = new ContentValues();
                             DatabaseHelper databaseHelper2 = new DatabaseHelper(getApplicationContext());
                             ContentValues values2 = new ContentValues();
 
@@ -192,20 +195,14 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
                             allocate = (float) 10 / 100 * Integer.parseInt(budgetAmount);
                             String _allocateString = String.valueOf(allocate);
                             try {
-                                // Inserting data into budget database
-                                values.put(Database.Budget.COLUMN_BUDGET_NAME, budgetName);
-                                values.put(Database.Budget.COLUMN_BUDGET_AMOUNT, budgetAmount);
-                                values.put(Database.Budget.COLUMN_USER_ID, userId);
-
-                                // Insert to the budegt Db
-                                long budgetId =  databaseHelper.Insert(Database.Budget.TABLE_NAME, values);
-
 
                                 // Inserting data into Items database
                                 values2.put(Database.Items.COLUMN_ITEM_NAME, itemName);
                                 values2.put(Database.Items.COLUMN_PRIORITY, spinnerItem);
                                 values2.put(Database.Items.COLUMN_BUDGET_ALLOCATE, _allocateString);
                                 values2.put(Database.Items.COLUMN_BUDGET_ID, budgetId);
+                                values2.put(Database.Items.COLUMN_USER_ID, userId);
+
 
                                 // Insert to the budegt Db
                                 databaseHelper2.Insert(Database.Items.TABLE_NAME, values2);

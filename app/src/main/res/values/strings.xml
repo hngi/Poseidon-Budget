@@ -41,6 +41,8 @@
     <string name="enter_item_name">Enter item name</string>
     <string name="p">c</string>
     <string name="no_budget">You have not created any budget yet</string>
+    <string name="no_money">N 0.00</string>
+    <string name="log_out">Log out</string>
     <string name="no_money">0.00</string>
     <string-array name="spinner">
         <item>High</item>

@@ -59,6 +59,7 @@ public final class Database {
         public static final String COLUMN_PRIORITY = "item_priority";
         public static final String COLUMN_BUDGET_ALLOCATE = "budget_allocate";
         public static final String COLUMN_BUDGET_ID = "budget_id";
+        public static final String COLUMN_USER_ID = "user_id";
 
         // Create table
         public static final String CREATE_QUERY =
@@ -67,7 +68,8 @@ public final class Database {
                         + Items.COLUMN_ITEM_NAME + " TEXT, "
                         + Items.COLUMN_PRIORITY + " TEXT, "
                         + Items.COLUMN_BUDGET_ALLOCATE + " TEXT, "
-                        + Items.COLUMN_BUDGET_ID + " INTEGER)";
+                        + Items.COLUMN_BUDGET_ID + " INTEGER, "
+                        + Items.COLUMN_USER_ID + " INTEGER)";
     }
 
 

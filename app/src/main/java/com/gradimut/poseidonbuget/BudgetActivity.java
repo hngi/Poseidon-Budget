@@ -63,6 +63,8 @@ public class BudgetActivity extends AppCompatActivity {
         moneyTxtView = findViewById(R.id.moneyTxtView);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 
@@ -147,6 +149,14 @@ public class BudgetActivity extends AppCompatActivity {
 
     private void populateBudget() {
 
+        final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+        final String budg = sharedPreferences2.getString("BUDGET_ID","DEFAULT_BUDG");
+
+        Log.d("populateBudget 3 : ", budg);
+
+
 
         try {
 
@@ -157,11 +167,15 @@ public class BudgetActivity extends AppCompatActivity {
                     Database.Items.COLUMN_BUDGET_ALLOCATE,
             };
 
+            String whereClause = Database.Items.COLUMN_USER_ID + " = ? " + " AND "  + Database.Items.COLUMN_BUDGET_ID + " = ? ";
+
+            String[] whereArgs = {userId, budg};
+
             Cursor cursor = databaseHelper.read(
                     Database.Items.TABLE_NAME,
                     strColumns,
-                    null,
-                    null,
+                    whereClause,
+                    whereArgs,
                     null,
                     null,
                     null
@@ -179,8 +193,10 @@ public class BudgetActivity extends AppCompatActivity {
                     String itemName = cursor.getString(cursor.getColumnIndex(Database.Items.COLUMN_ITEM_NAME));
                     String budgetAllocate = cursor.getString(cursor.getColumnIndex(Database.Items.COLUMN_BUDGET_ALLOCATE));
 
+                    float transform = Float.parseFloat(budgetAllocate);
+                    int trans = (int) transform;
                     item.setItemName(itemName);
-                    item.setBudgetAllocate(budgetAllocate);
+                    item.setBudgetAllocate("N " + trans);
 
                     itmList.add(item);
                     itemAdapter.notifyDataSetChanged();

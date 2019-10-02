@@ -1,6 +1,7 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -42,6 +43,8 @@ public class HistoryActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.tvNoBudget);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 
@@ -51,6 +54,9 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     private void populate() {
+        final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
         try {
 
             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
@@ -61,11 +67,16 @@ public class HistoryActivity extends AppCompatActivity {
                     Database.Budget.COLUMN_DATETIME,
             };
 
+            String whereClause = Database.Budget.COLUMN_USER_ID + " = ? ";
+
+
+            String[] whereArgs = {userId};
+
             Cursor cursor = databaseHelper.read(
                     Database.Budget.TABLE_NAME,
                     strColumns,
-                    null,
-                    null,
+                    whereClause,
+                    whereArgs,
                     null,
                     null,
                     null

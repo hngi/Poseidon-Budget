@@ -10,6 +10,8 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -19,6 +21,7 @@ import android.widget.Toast;
 import com.gradimut.poseidonbuget.model.BudgetModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
+import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -53,6 +56,8 @@ public class DashBoardActivity extends AppCompatActivity {
         textView2 = findViewById(R.id.tvNoBudget);
 
         RecyclerView.LayoutManager rvLayout = new LinearLayoutManager(getApplicationContext());
+        ((LinearLayoutManager) rvLayout).setReverseLayout(true);
+        ((LinearLayoutManager) rvLayout).setStackFromEnd(true);
         rv.setLayoutManager(rvLayout);
         rv.setAdapter(itemAdapter);
 
@@ -68,14 +73,6 @@ public class DashBoardActivity extends AppCompatActivity {
         userTV.setText(userName);
 
         rv = findViewById(R.id.recycler_history);
-
-//        dashList = new ArrayList<>();
-//        dashList.add(new DashModel(R.drawable.coins,"First salary", "24 October", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"November salary", "2 November", "Naira","100000"));
-//        dashList.add(new DashModel(R.drawable.coins,"January salary", "24 January", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"December salary", "03 December", "Naira","200000"));
-//        dashList.add(new DashModel(R.drawable.coins,"August salary", "24 August", "Naira","200000"));
-//        RecyclerView.LayoutManager rvLayout= new LinearLayoutManager(this);
 
         rv.setLayoutManager(rvLayout);
     }
@@ -153,6 +150,10 @@ public class DashBoardActivity extends AppCompatActivity {
     private void populate() {
         try {
 
+            final SharedPreferences sharedPreferences2 = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+            final String userId = sharedPreferences2.getString("USERID","DEFAULT_NAME");
+
             DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
 
             String[] strColumns = {
@@ -161,11 +162,16 @@ public class DashBoardActivity extends AppCompatActivity {
                     Database.Budget.COLUMN_DATETIME,
             };
 
+            String whereClause = Database.Budget.COLUMN_USER_ID + " = ? ";
+
+
+            String[] whereArgs = {userId};
+
             Cursor cursor = databaseHelper.read(
                     Database.Budget.TABLE_NAME,
                     strColumns,
-                    null,
-                    null,
+                    whereClause,
+                    whereArgs,
                     null,
                     null,
                     null
@@ -227,6 +233,37 @@ public class DashBoardActivity extends AppCompatActivity {
         mNavBtn.setColorFilter(Color.argb(255, 255, 255, 255));
         mNavCard = findViewById(R.id.home_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
+
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        /*if (id == R.id.action_settings) {
+            return true;
+        }*/
+        if (id == R.id.action_logout) {
+            sharedPreferences.edit().putString("USERID",null).apply();
+            sharedPreferences.edit().putBoolean("isLoggedIn",false).apply();
+            new PreferenceManager(this).checkPreference();
+            Intent i = new Intent(DashBoardActivity.this, LoginActivity.class);
+            startActivity(i);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }
