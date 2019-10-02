@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.gradimut.poseidonbuget.model.BudgetModel;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHolder> {
@@ -48,10 +47,10 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
         BudgetModel item = budgetList.get(i);
         viewHolder.tvTxt.setText(item.getName());
+
         double amnt = Double.parseDouble(item.getAmount());
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        String moneyString = formatter.format(amnt);
-        viewHolder.tvTotal.setText(moneyString);
+        int trans = (int) amnt;
+        viewHolder.tvTotal.setText(CurrencyActivity.currencyText + " " + trans);
         viewHolder.tvDate.setText(item.getDate());
     }
 

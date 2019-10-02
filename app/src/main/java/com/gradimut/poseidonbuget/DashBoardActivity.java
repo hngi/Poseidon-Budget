@@ -23,7 +23,6 @@ import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 import com.gradimut.poseidonbuget.utils.PreferenceManager;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -125,10 +124,11 @@ public class DashBoardActivity extends AppCompatActivity {
                 if (cursorSearch.moveToFirst()) {
                     do {
                         String amount = cursorSearch.getString((cursorSearch.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT)));
+
                         double amnt = Double.parseDouble(amount);
-                        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-                        String moneyString = formatter.format(amnt);
-                        am.setText(moneyString);
+                        int trans = (int) amnt;
+                        //am.setText("₦ " + trans);
+                        am.setText(CurrencyActivity.currencyText + " " + trans);
 
                     } while (cursorSearch.moveToNext());
 
@@ -222,10 +222,6 @@ public class DashBoardActivity extends AppCompatActivity {
     public void historyBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), HistoryActivity.class);
         startActivity(intent);
-    }
-
-    public void dashboardBtn_onClick(View view) {
-        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {

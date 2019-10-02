@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".AddNewActivity"></activity>
+        <activity android:name=".CurrencyActivity"></activity>
+        <activity android:name=".AddNewActivity" />
         <activity android:name=".HistoryActivity" />
         <activity android:name=".BudgetActivity" />
         <activity android:name=".MainActivity" />
@@ -22,7 +23,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-      </activity>
+        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

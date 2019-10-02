@@ -19,7 +19,6 @@ import com.gradimut.poseidonbuget.model.ItemModel;
 import com.gradimut.poseidonbuget.sql.Database;
 import com.gradimut.poseidonbuget.sql.DatabaseHelper;
 
-import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -72,7 +71,6 @@ public class BudgetActivity extends AppCompatActivity {
 
 
         populateBudget();
-        // setNavigationMenu();
     }
 
     private void checkIt() {
@@ -124,9 +122,8 @@ public class BudgetActivity extends AppCompatActivity {
                     do {
                         String amount = cursorSearch.getString((cursorSearch.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT)));
                         double amnt = Double.parseDouble(amount);
-                        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-                        String moneyString = formatter.format(amnt);
-                        moneyTxtView.setText(moneyString);
+                        int trans = (int) amnt;
+                        moneyTxtView.setText(CurrencyActivity.currencyText + " " + trans);
 
                     } while (cursorSearch.moveToNext());
 
@@ -196,7 +193,7 @@ public class BudgetActivity extends AppCompatActivity {
                     float transform = Float.parseFloat(budgetAllocate);
                     int trans = (int) transform;
                     item.setItemName(itemName);
-                    item.setBudgetAllocate("N " + trans);
+                    item.setBudgetAllocate(CurrencyActivity.currencyText + " " + trans);
 
                     itmList.add(item);
                     itemAdapter.notifyDataSetChanged();
@@ -238,24 +235,8 @@ public class BudgetActivity extends AppCompatActivity {
     public void navSetUp() {
         mNavBtn = findViewById(R.id.profile_nav_btn);
         mNavBtn.setColorFilter(Color.argb(255, 255, 255, 255));
-        //mNavBtn.setImageResource(R.drawable.ic_add_white_24dp);
         mNavCard = findViewById(R.id.profile_nav_card);
         mNavCard.setCardBackgroundColor(Color.parseColor("#055DA8"));
     }
-    /*private void setNavigationMenu() {
 
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_add_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_history_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_home_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-        DrawableCompat.setTint(
-                DrawableCompat.wrap(getDrawable(R.drawable.ic_person_black_24dp)),
-                ContextCompat.getColor(this, R.color.black));
-
-    }*/
 }

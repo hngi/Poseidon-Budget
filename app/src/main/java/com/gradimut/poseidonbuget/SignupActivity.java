@@ -130,7 +130,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
                                 Toast.makeText(getApplicationContext(), "Registration successful, sign in", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(SignupActivity.this, DashBoardActivity.class);
+                                Intent intent = new Intent(SignupActivity.this, CurrencyActivity.class);
                                 startActivity(intent);
                                 finish();
                             }
