@@ -40,7 +40,7 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        getSupportActionBar().setTitle("Dashboard"); // for set actionbar title
+        getSupportActionBar().setTitle("History"); // for set actionbar title
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         rv = findViewById(R.id.recycler_history);

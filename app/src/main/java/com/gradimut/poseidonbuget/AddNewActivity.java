@@ -44,7 +44,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
 
         setContentView(R.layout.activity_add_new);
 
-        getSupportActionBar().setTitle("Dashboard"); // for set actionbar title
+        getSupportActionBar().setTitle("Make A Bugdet"); // for set actionbar title
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 

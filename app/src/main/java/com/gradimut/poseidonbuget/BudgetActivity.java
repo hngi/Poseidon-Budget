@@ -45,7 +45,7 @@ public class BudgetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_budget);
 
-        getSupportActionBar().setTitle("Dashboard"); // for set actionbar title
+        getSupportActionBar().setTitle("Allocated Budget"); // for set actionbar title
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 //        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
