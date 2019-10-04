@@ -47,6 +47,7 @@ public class BudgetActivity extends AppCompatActivity {
 
         getSupportActionBar().setTitle("Allocated Budget"); // for set actionbar title
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setElevation(0);
 
 //        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CREDENTIALS", MODE_PRIVATE);
 //

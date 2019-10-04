@@ -6,6 +6,16 @@
     android:layout_height="wrap_content">
 
 
+    <ImageButton
+        android:id="@+id/profile_nav_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:background="@drawable/history_shape"
+        android:contentDescription="@string/profile_nav"
+        android:src="@drawable/coins" />
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
