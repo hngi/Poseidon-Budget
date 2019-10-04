@@ -31,8 +31,4 @@
         android:textAlignment="center"
         android:layout_marginTop="40dp"
         android:id="@+id/txtDescription"/>
-
-    
-
-
 </LinearLayout>

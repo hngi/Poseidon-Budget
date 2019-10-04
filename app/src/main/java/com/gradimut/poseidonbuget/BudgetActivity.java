@@ -212,7 +212,8 @@ public class BudgetActivity extends AppCompatActivity {
     }
 
     public void back_onClick(View view) {
-        Toast.makeText(getApplicationContext(), "Hard beats soft!", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(view.getContext(), DashBoardActivity.class);
+        startActivity(intent);
     }
 
     public void profileBtn_onClick(View view) {
