@@ -1,6 +1,7 @@
 package com.gradimut.poseidonbuget;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 import com.gradimut.poseidonbuget.model.DashModel;
 
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
+
 
 public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
 
@@ -50,7 +54,9 @@ public class DashAdapter extends RecyclerView.Adapter<DashAdapter.ViewHolder> {
         date.setText(salaryItem.getDate());
         double amnt = Double.parseDouble(salaryItem.getTotal());
         int trans = (int) amnt;
-        total.setText(CurrencyActivity.currencyText + " " + trans);
+        final SharedPreferences sharedPreferences = mContext.getSharedPreferences("USER_CURRENCY", MODE_PRIVATE);
+        final String userCurrency = sharedPreferences.getString("CURRENCY", "DEFAULT_EMAIL");
+        total.setText(userCurrency + " " + trans);
     }
 
     @Override

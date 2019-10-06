@@ -50,7 +50,7 @@ public class DashBoardActivity extends AppCompatActivity {
         TextView userTV = findViewById(R.id.tvUsername);
 
         rv = findViewById(R.id.recycler_history);
-        itemAdapter = new HistoryAdapter(itmList);
+        itemAdapter = new HistoryAdapter(this, itmList);
 
         textView2 = findViewById(R.id.tvNoBudget);
 
@@ -128,7 +128,10 @@ public class DashBoardActivity extends AppCompatActivity {
                         double amnt = Double.parseDouble(amount);
                         int trans = (int) amnt;
                         //am.setText("₦ " + trans);
-                        am.setText(CurrencyActivity.currencyText + " " + trans);
+
+                        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CURRENCY", MODE_PRIVATE);
+                        final String userCurrency = sharedPreferences.getString("CURRENCY", "DEFAULT_EMAIL");
+                        am.setText(userCurrency + " " + trans);
 
                     } while (cursorSearch.moveToNext());
 
@@ -209,6 +212,9 @@ public class DashBoardActivity extends AppCompatActivity {
         }
     }
 
+    public void dashboardBtn_onClick(View view) {
+        Toast.makeText(getApplicationContext(), "Home", Toast.LENGTH_LONG).show();
+    }
     public void profileBtn_onClick(View view) {
         Intent intent = new Intent(view.getContext(), BudgetActivity.class);
         startActivity(intent);

@@ -34,6 +34,7 @@ public class BudgetActivity extends AppCompatActivity {
     RecyclerView rv;
     BudgetAdapter itemAdapter;
     List<ItemModel> itmList = new ArrayList<>();
+    public String currencyText;
 
 
     @Override
@@ -123,7 +124,9 @@ public class BudgetActivity extends AppCompatActivity {
                         String amount = cursorSearch.getString((cursorSearch.getColumnIndex(Database.Budget.COLUMN_BUDGET_AMOUNT)));
                         double amnt = Double.parseDouble(amount);
                         int trans = (int) amnt;
-                        moneyTxtView.setText(CurrencyActivity.currencyText + " " + trans);
+                        final SharedPreferences sharedPreferences = getSharedPreferences("USER_CURRENCY", MODE_PRIVATE);
+                        final String userCurrency = sharedPreferences.getString("CURRENCY", "DEFAULT_EMAIL");
+                        moneyTxtView.setText(userCurrency + " " + trans);
 
                     } while (cursorSearch.moveToNext());
 
@@ -193,7 +196,9 @@ public class BudgetActivity extends AppCompatActivity {
                     float transform = Float.parseFloat(budgetAllocate);
                     int trans = (int) transform;
                     item.setItemName(itemName);
-                    item.setBudgetAllocate(CurrencyActivity.currencyText + " " + trans);
+                    final SharedPreferences sharedPreferences = getSharedPreferences("USER_CURRENCY", MODE_PRIVATE);
+                    final String userCurrency = sharedPreferences.getString("CURRENCY", "DEFAULT_EMAIL");
+                    item.setBudgetAllocate(userCurrency + " " + trans);
 
                     itmList.add(item);
                     itemAdapter.notifyDataSetChanged();
@@ -229,7 +234,7 @@ public class BudgetActivity extends AppCompatActivity {
     }
 
     public void profileBtn_onClick(View view) {
-        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Budget", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {

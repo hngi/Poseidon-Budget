@@ -251,7 +251,7 @@ public class AddNewActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
     public void addBtn_onClick(View view) {
-        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Add New", Toast.LENGTH_LONG).show();
     }
 
     public void navSetUp() {

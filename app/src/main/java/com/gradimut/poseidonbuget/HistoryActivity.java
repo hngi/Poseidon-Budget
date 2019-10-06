@@ -38,7 +38,7 @@ public class HistoryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         rv = findViewById(R.id.recycler_history);
-        itemAdapter = new HistoryAdapter(itmList);
+        itemAdapter = new HistoryAdapter(this, itmList);
 
         textView2 = findViewById(R.id.tvNoBudget);
 
@@ -134,7 +134,7 @@ public class HistoryActivity extends AppCompatActivity {
     }
 
     public void historyBtn_onClick(View view) {
-        Toast.makeText(getApplicationContext(), "You're here already silly...", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "History", Toast.LENGTH_LONG).show();
     }
     public void navSetUp() {
         mNavBtn = findViewById(R.id.history_nav_btn);
